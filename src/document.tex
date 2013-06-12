@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+
+\section{Cydonia 43: Ein gewaltfreier "Multiplayer-Taktik-Shooter"}
+
+\subsection{Motivation}
+
+Seit langem herrscht in Politik und Gesellschaft Uneinigkeit über die Auswirkungen von Gewaltdarstellungen in
+Computerspielen. Dennoch sind solche stets in vielen Spielen enthalten gewesen.
+
+\subsection{Wahl der Programmiersprache}
+
+Im Bereich der Computerspiele wird heute überwiegend C++ eingesetzt. Hauptgrund dafür ist die hohe Performance, außerdem
+die OO-Unterstützung und die Tatsache, dass die meisten Tools und Bibliotheken auf C++ basieren oder dazu kompatibel
+sind. Da das Ziel dieser Arbeit allerdings nicht die Entwicklung eines marktreifen AAA-Games, sondern vielmehr eines
+Prototypen war, konnte der Performance-Faktor weitgehend vernachlässigt werden. Bereits vorhandene Erfahrung im Umgang
+mit der Programmiersprache, den verfügbaren Libraries und der Entwicklungsumgebung, sowie die hohe Produktivität der
+Sprache an sind entscheidend für die Wahl von Java verantwortlich.
+
+\subsection{Wahl der Engine}
+
+\subsubsection{Was ist eine Game-Engine?}
+
+Ein Computerspiel besteht meist aus einer Spielewelt, die optisch und aktustisch erlebt werden kann. In vielen Spielen
+steuert der Spieler seinen Hauptcharakter, den sog. Avatar, durch diese Welt. Dazu werden Softwarebibliotheken benötigt,
+die dreidimensionalen Raumklang erzeugen, Objekte grafisch darstellen, physikalische Abläufe berechnen, Benutzereingaben
+in Steuerbefehle umwandeln, sowie Ereignisse über das Netzwerk kommunizieren. Eine Spiele-Engine bietet dem
+Programmierer diese und andere Funktionalitäten über ein einheitliches Interface an. Zum einen wird dadurch der
+Programmcode besser strukturiert, zum anderen der Programmierer entlastet, als wenn diese Programmteile stets vom
+Entwickler selbst geschrieben werden müssten.
+Es bietet sich dabei natürlich an, eine Engine für mehrere (ähnliche) Spiele zu verwenden. Einige Hersteller stellen
+ihre Engine anderen Entwicklern (teils gegen Lizenzgebühren) zur Verfügung. Bekannte Engines großer Spielehersteller
+sind die Frostbite-Engine (Dice), Cry-Engine (Crytec), Unreal-Engine (Epic), die neben dem Hauptspiel, für das sie
+entwickelt wurden, auch in weiteren Spielen verwendet wurden.
+
+Es ist natürlich möglich, ein Spiel ohne bereits existierende Game-Engine zu schreiben. Das führt allerdings in den
+meisten Fällen dazu, dass man eine eigene Engine innerhalb des Spiels entwickelt. Da heutzutage reichlich gute Engines
+verfügbar sind, einige davon sogar ohne Lizenzgebühren frei verwendbar, macht dieser Mehraufwand wenig Sinn. Vor allem
+ist zur Entwicklung einer guten Engine viel Erfahrung nötig.
+
+\subsubsection{Game-Engine für Java}
+
+Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden wäre
+über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu Java
+kompatibel oder gar in Java geschrieben sind.
+Die Auswahl ist nicht sehr groß, so lässt sich zum etwa in der Auflistung der Wikipedia schnell die Java MonkeyEngine
+bestes Gesamtpaket identifizieren.
+
+\end{document}
