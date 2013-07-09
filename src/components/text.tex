@@ -1,0 +1,48 @@
+% Included by MAIN.TEX
+% Put your content in here or include it by using \input (\include won't work)
+
+\addtolength{\evensidemargin}{-12mm}
+
+% ---------------------------------------------------------------------------
+%
+%Introduction and Background Theory
+%
+% ---------------------------------------------------------------------------
+\part[Introduction and Background Theory]{Introduction and Background Theory}
+\label{part:introAndBackgroundTheory}
+\input{chapters/Introduction}
+\input{chapters/BackgroundAndTheory}
+
+%
+%% ---------------------------------------------------------------------------
+%%
+%% Analyse und Design
+%%
+%%% ---------------------------------------------------------------------------
+\part[Analyse und Design]{Analyse und Design}
+\label{part:analysisAndDesign}
+\input{chapters/ViolenceSubstitution}
+\input{chapters/TechnicalDetails}
+
+%% ---------------------------------------------------------------------------
+%%
+%% Results and Conclusion
+%%
+%% ---------------------------------------------------------------------------
+\part[Results and Conclusion]{Results and Conclusion}
+\label{part:resultsAndConclusion}
+\input{chapters/Conclusion} 
+
+
+% ---------------------------------------------------------------------------
+%
+% Appendix
+%
+% ---------------------------------------------------------------------------
+
+\part*{Appendix}
+\addcontentsline{toc}{part}{Appendix}
+
+\appendix %---------------------------------------
+
+\input{chapters/DetailedDescriptions}
