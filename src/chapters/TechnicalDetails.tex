@@ -36,5 +36,61 @@ ist zur Entwicklung einer guten Engine viel Erfahrung nötig.
 Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden wäre
 über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu Java
 kompatibel oder gar in Java geschrieben sind.
-Die Auswahl ist nicht sehr groß, so lässt sich zum etwa in der Auflistung der Wikipedia schnell die Java MonkeyEngine
-bestes Gesamtpaket identifizieren.
+Die Auswahl ist nicht sehr groß, so lässt sich etwa in der Auflistung der Wikipedia schnell die Java MonkeyEngine als
+bestes Gesamtpaket identifizieren. Sie bietet alle nötigen Features, ist schon in der dritten Version verfügbar, somit
+ist von einem Gewissen Reifegrad auszugehen, sie ist frei verwendbar unter der BSD-Lizenz und sie rendert mithilfe der
+Java-OpenGL-Anbindung jogl, was eine gewisse Grafikperformance erwarten lässt.
+
+\section{Netzwerk}
+
+Um den Spielablauf interaktiv zwischen den Mitspielern zu gestalten, ist es nötig die simulierte virtuelle Welt zwischen
+den einzelnen Client-Instanzen zu synchronisieren. Dies übernimmt der sog. Netcode.
+
+Die wichtigsten Aufgaben des Netzwerkcodes sind:
+\begin{itemize} 
+\item Übertragen von Benutzereingaben in Form von Steuerbefehlen zum Server.
+\item Benachrichtigung der Clients über Ereignisse, die die simlulierte Welt beeinflussen.
+\item Senden von Updates über den aktuellen Bewegungszustand / die aktuelle Position dynamischer Objekte zum Client.
+\end{itemize}
+
+Die jMonkeyEngine 3 enthält zu diesem Zweck das SpiderMonkey Paket, das die Übertragung von Nachrichten per TCP oder UDP
+ermöglicht. Die Übertragung ist threadsafe und unterstützt optional eine Komprimierung der Daten. Jeder benötigte
+Nachrichtentyp wird als Klasse implementiert, die von einer abstrakten Message-Klasse erbt. Die Felder der Klasse dienen
+zur Übertragung von zusätzlichen Werten. Aus Benutzereingaben resultierende Steuerbefehle werden zum Beispiel per
+InputMessage an der Server geschickt. Die Klasse InputMessage hat drei Felder: playerid enthält die ID des Spielers,
+command beschreibt die gewünschte Funktion (z.B. "move forward") und value gibt an, ob die zugehörige Taste gedrückt
+oder losgelassen wurde.\\
+
+Drückt zum Beispiel ein Spieler die Taste "w", ermittelt das Input-Mapping den Steuerbefehl "move forward". Daraus wird
+eine InputMessage erstellt, die die ID des Spielers, den Befehl "move forward" sowie einen Parameter, der das Drücken
+(im Gegensatz zum Loslassen) der Taste kennzeichnet. Diese Nachricht wird an den Server geschickt. Der Server
+verarbeitet die erhaltene Nachricht im nächsten Zyklus und simuliert ebenfalls in den folgenden Zyklen die
+Vorwärtsbewegung des Spielers.\\
+
+In regelmäßigen Abständen (standartmäßig alle 50 ms) generiert der Server ein sog Snapshot der virtuellen Welt. Dieser
+enthält die Positionen und Bewegungsrichtungen aller dynamischen Objekte. Eine Nachricht, die den Snapshot enthält wird
+an die Clients geschickt, die ihre Simulation entsprechend anpassen, um die neuen Informationen zu berücksichtigen.\\
+
+Bei einer Latenz von 150 ms zwischen Client und Server, würde der Spieler das visuelle Feedback zu seiner Eingabe
+frühestens 150 ms später erhalten. Eine solche Verzögerung fühlt sich unnatürlich an und stört den Spielfluss. Deshalb
+wird die Benutzereingabe vom Client in gleicher Weise wie vom Server verareitet. Der Spieler bewegt sich also direkt
+nach seiner Eingabe vorwärts. Wenn der nächste Snapshot vom Server ankommt, ergibt sich zwangsläufig eine Abweichung
+zwischen den Spielerpositionen. Der Client muss die Spielerposition des Servers übernehmen, da der Server die alleinige
+Authorität über das Spielgeschehen besitzt. Damit der Spieler nicht plötzlich zurückspringt, wodurch der Spielfluss
+wiederum gestört und somit nichts gewonnen wäre, passt der Client die Position des Spielers in kleinen Schritten über
+einen kurzen Zeitraum hinweg an die vom Server vorgegebene Position an. Für den Spieler sieht es dann so aus, als ob er
+einen kurzen Moment etwas langsamer laufen würde, wobei diese Veränderung kaum wahrnehmbar ist.\\
+
+Diese Maßnahme auch als Input-Prediction bezeichnet. Sie ist nur eine von vielen möglichen Maßnahmen zur Vermeidung von
+Latenz-basierten Problemen. Vor allem bei Spielen im Internet, wo die Latenzzeiten im Vergleich zum lokalen Netzwerk
+höher sind, sind weitere Vorkehrungen nötig, um einen fehlerfreien Spielfluss zu gewährleisten.\\
+
+Die Entwickler-Community der Source-Engine des Entwicklers und Publishers Valve hat eine sehr ausführliche und
+verständliche Dokumentation der funktionsweise ihres Netcodes veröffentlicht. Darin finden sich Beschreibungen der
+Techniken Entity-Interpolation, Input-Prediction und Lag-Compensation. Zusammengenommen erreichen diese Techniken einen
+deutlich höheren Wirkungsgrad. Die Implementierung bedeutet jedoch hohen Aufwand, weswegen bei der vorliegenden Arbeit
+auf eine Umsetzung verzichtet wurde.\\
+
+Der Netcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleines Spiel
+ausschließlich als Testplatform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
+im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios.

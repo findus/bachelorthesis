@@ -1,0 +1,23 @@
+\chapter{Design}
+\label{chapter:Design}
+
+
+\section{Elemente des Spiels}
+
+
+
+
+\section{Architektur}
+
+Das Spiel besteht aus einem Server und einem Client. Der Server hat im Multiplayerspiel die Kontrolle über alle
+entscheidenden Ereignisse. Die Clients simulieren den Spielablauf ebenfalls, übernehmen dabei jedoch bei einer
+Abweichung den Status des Servers.
+
+\section{Hardware-Software Mapping}
+
+Das Spiel kann entweder im Internet oder im lokalen Netzwerk gespielt werden. Im ersten Fall läuft die Serversoftware
+auf einem gehosteten Server im Internet, der per IP-Adresse oder Domain erreichbar ist. Im zweiten Fall läuft die
+Server-Software auf einem der PCs der Spieler oder einem extra dafür eingerichteten zusätzlichem Rechner/Server. Die
+Clientsoftware wird in beiden Fällen auf dem Computer jedes Spielers gestartet. Technisch ist es möglich, beliebig viele
+Instanzen der Client-Software auf einer Maschine laufen zu lassen, jedoch stets nur eine Instanz der Server-Software, da
+diese festgelegte Ports reserviert.
