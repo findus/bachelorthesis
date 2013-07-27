@@ -1,12 +1,17 @@
-\chapter{Design}
-\label{chapter:Design}
+\chapter{Konzept}
+\label{chapter:concept}
 
 Die Konzepterstellung verfolgt zwei Ziele: Zum einen sollen die Eigentschaften, in denen sich der Shooter außer dem
 Schießen noch von anderen Genres unterscheidet und damit selbst definiert, identifiziert und verwendet werden. Zum
 Anderen sollen Möglichkeiten für neue Spielelemente gefunden und untersucht werden, die eine evetnuell entstehende
 Lücke im Konzept durch den Wegfall des Elements "Schießen" füllen oder ausgleichen können.\\
 
-Die These hinter dieser Aufgabenstellungen lässt sich also zusammenfassen als "Shooter - Schießen + X => Spielqualität"
+Die These hinter dieser Aufgabenstellungen lässt sich also zusammenfassen als:
+
+\begin{center}
+Shooter - Schießen + X => Spielqualität
+\end{center}
+
 Dabei ist mit Spielqualität Spielspaß, Motivation und Schwierigkeit gemeint, die an den Erwartungen von Shooterspielern
 gemessen werden.
 
@@ -34,7 +39,7 @@ Alternativen sind jedoch für ein gewaltfreies Spiel nicht geeignet.\\
 
 Der Versuch, einen Spielmodus zu finden oder zu entwickeln, scheitert an einem Problem, das fast alle denkbaren
 Spielmodi betrifft. Ohne eine Möglichkeit neben dem Bestreben, das eigene Spielziel möglichst schnell zu erreichen, auch
-den Gegner auf dem Weg zu seinem Spielziel aufzuhalten, verliert ein Multiplayer-Spiel seinen Interaktiven Charakter und
+den Gegner auf dem Weg zu seinem Spielziel aufzuhalten, verliert ein Multiplayer-Spiel seinen interaktiven Charakter und
 verkommt dann zu einem reinen Wettrennen. \\
 
 
@@ -49,13 +54,7 @@ im gleichen Team sind".\\
 
 Nahkampf\\
 
-Ein Spiel nur mit dem Begriff "Shooter" zu beschreiben, und dann über das nicht vorhandensein von Gewaltdarstellungen zu
-sprechen, klingt absurd und widersprüchlich. Es verrät schließlich schon der Name das wesentliche Spielelement, das
-Schießen, das sich kaum ohne Gewalt darstellen lässt. Es geht hier jedoch nicht darum, ein Schießspiel ohne
-Gewalt zu entwickeln, sondern darum, die Eigentschaften, in denen sich der Shooter außer dem Schießen noch von anderen
-Genres unterscheidet und damit selbst definieren lässt, zu identifizieren und die weiteren Rahmenbedingen und
-Alleinstellungsmerkmale des Shooters zu identifizieren, Je weiter man jedoch das Genre auf bestimmte Shooter eingrenzt,
-desto mehr rückt das Schießen in den Hintergrund. Während man durch das erweitern der Spielbeschreibung
+
 
 
 \section{Orientierung}
@@ -65,28 +64,7 @@ betrachtet.\\
 
 Desweiteren bietet es sich an, Spiele zu untersuchen, die Gemeinsamkeiten bezüglich gewisser Eigenschaften oder
 Spielelemente mit den oben genannten Spielen aufweisen. Darunter fallen zum Beispiel eine relativ junge Form von (meist
-physikbasierten) Rätselspielen, die die Ego-Perspektive und die Steuerung der Shooter übernommen haben. Besonders seien
-hier Portal und Qube hervorgehoben.\\
+physikbasierten) Rätselspielen, wie z.B. Portal oder Qube, die die Ego-Perspektive und die Steuerung der Shooter übernommen haben.\\
 
 Auch Shooter, die ein neben dem Töten möglichst vieler Gegner ein alternatives Spielziel anbieten, wie zum Beispiel
 Unreal Tournament im "Capture the Flag"-Modus, sollen untersucht werden.
-
-
-
-
-
-
-\section{Architektur}
-
-Das Spiel besteht aus einem Server und einem Client. Der Server hat im Multiplayerspiel die Kontrolle über alle
-entscheidenden Ereignisse. Die Clients simulieren den Spielablauf ebenfalls, übernehmen dabei jedoch bei einer
-Abweichung den Status des Servers.
-
-\section{Hardware-Software Mapping}
-
-Das Spiel kann entweder im Internet oder im lokalen Netzwerk gespielt werden. Im ersten Fall läuft die Serversoftware
-auf einem gehosteten Server im Internet, der per IP-Adresse oder Domain erreichbar ist. Im zweiten Fall läuft die
-Server-Software auf einem der PCs der Spieler oder einem extra dafür eingerichteten zusätzlichem Rechner/Server. Die
-Clientsoftware wird in beiden Fällen auf dem Computer jedes Spielers gestartet. Technisch ist es möglich, beliebig viele
-Instanzen der Client-Software auf einer Maschine laufen zu lassen, jedoch stets nur eine Instanz der Server-Software, da
-diese festgelegte Ports reserviert.
