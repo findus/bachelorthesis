@@ -33,24 +33,59 @@ Beispiel aus Counterstrike oder Battlefield. Daraus entstehen folgende Anforderu
 
 
 \section{Spielziel}
-Da das Töten von Gegnern als Spielziel nicht zur Verfügung steht, wird ein anderes benötigt. Counterstrike lässt die
-Teams zum Beispiel durch Bewachen/Befreien von Geiseln bzw. durch Legen/Entschärfen einer Bombe gewinnen. Beide
-Alternativen sind jedoch für ein gewaltfreies Spiel nicht geeignet.\\
+Da das Töten von Gegnern als Spielziel nicht zur Verfügung steht, wird ein anderes benötigt. \\
+
+Counterstrike lässt die Teams zum Beispiel durch Bewachen/Befreien von Geiseln bzw. durch Legen/Entschärfen einer Bombe
+gewinnen. Beide Alternativen sind jedoch für ein gewaltfreies Spiel nicht geeignet.\\
+
+Im klassischen Conquest-Modus, der vor allem in der Battlefield-Serie besondere Beliebtheit erreichte, versuchen die
+Spieler bestimmte Orte der Spielwelt unter ihrer Kontrolle zu halten bzw. Orte zu erobern, die der Gegner kontrolliert.
+Um die Kontrolle über einen solchen Ort zu erlangen, müssen sich die Spieler längere Zeit innerhalb eines engen Radius
+um den Kontrollpunkt aufhalten.\\
+
+Letztlich soll ein bekannter Modus, den auch manche Shooter (z.B. Unreal Tournament) anbieten, verwendet
+werden: "Capture the Flag". Dabei müssen die Spieler eine Flagge aus der Basis des gegnerischen Teams holen, und zu
+ihrer eigenen Basis bringen, um Punkte zu erzielen. Gleichzeitig sollten sie verhindern, dass der Gegner ihre eigene
+Flagge klauen kann.
+
+\section{Zweikampf}
+In allen Shootern, unabhängig vom jeweiligen Spielziel, hat der Spieler die Möglichkeit, neben dem Bestreben, das eigene
+Spielziel möglichst schnell zu erreichen, auch den Gegner auf dem Weg zu seinem Spielziel aufzuhalten, indem er ihn
+tötet. Um den gewaltfreien Ansatz nicht zu gefährden, sollte der Spieler den Gegner nur indirekt über die gemeinsame
+Umgebung beeinflussen können, ihm z.B. (im wahrsten Sinne des Wortes) Steine in den Weg legen. Daraus ergeben sich
+jedoch Schwierigkeiten mit dem Spaßfaktor (siehe Kapitel "Usertests"). Der Grund dafür lässt sich anhand eines
+Vergleichs mit dem sportlichen Bereich erklären: Bei einem Ballspiel wie Fußball ist, wie auch beim Taktikshooter, die
+Positionierung der einzelnen Spieler auf dem Spielfeld, die taktische Zusammenarbeit, sowie die Fähigkeiten des
+Einzelnen entscheidend. Besonders interessant, sowohl für den Zuschauer als auch für die Spieler, wird es im Zweikampf,
+also dann, wenn zwei Spieler direkt aufeinander treffen und, nach einer (natürlich regelkonformen) Auseinandersetzung,
+nur einer seinen geplanten Weg fortsetzen kann. Als Sieger aus einem Zweikampf hervorzugehen, erzeugt beim Spieler ein
+besonders Hochgefühl. Dieses Hochgefühl möchte auch der Computerspieler erleben, weshalb eine direkte Einwirkung auf den
+Gegner zwingend Teil des Spiels sein muss. Im Mannschaftssport stellen Regeln und ein Schiedsrichter sicher, dass ein
+Zweikampf gewaltfrei abläuft. Im Computerspiel ist quasi der Entwickler für Regeln und Schiedsspruch zuständig. Er muss
+dem Spieler einen Rahmen bieten, innerhalb dessen sportlicher Zweikampf möglich ist, wobei sich eine besondere
+Herausforderung ergibt, wenn dieser Rahmen gleichzeitig Spannung und Gewaltfreiheit bieten soll.
+
+\section{Swapping}
+Die Spieler von Shootern sind es gewohnt, anders als im Sport, auch aus der Ferne einen Gegner angreifen zu können. Sog.
+Messerrunden, in denen ausschließlich Nahkampfwaffen zum Einsatz kommen, sind zwar eine willkommene Abwechslung
+zwischendurch, unterhalten aber kaum auf Dauer. Das zeigt sich zum Beispiel in den Serverzahlen auf www.gametracker.com:
+Von ca. 1500 Battlefield 3-Servern tragen nur 3 die "Knife only"-Regel in ihrem Namen (gezählt am 31.7.2013 um 15:20
+Uhr). Auf der Suche nach einem Spielelement, das dieses Einwirken auf den Gegner aus der Ferne ermöglicht, das Schießen
+also auf angemessene Weise ersetzt, wurden verschiedene Möglichkeiten erprobt (vollstandige Liste im Anhang). Die beste
+Substitution ist ein "Swapper" getauftes Equipment, mit der Spieler zwei beliebige Dinge (Gegenstände, Mitspieler,
+Gegner) markieren kann, die daraufhin den Platz wechseln. Diese Technik stellt nicht nur eine gewaltfreie Möglichkeit
+dar, den Gegner von seinem Weg abzubringen, es schafft auch großen taktischen und kreativen Freiraum. Die Spieler können
+damit die Spielwelt zu ihrem Vorteil verändern, kooperativ die besten Lösungen finden, sowie den Gegner in die Irre
+führen. Es spricht aber auch nichts dagegen, mehrere der erdachten Spielelemente zu verbinden, um so mehr Abwechslung zu
+schaffen. Auch andere Spiele bieten unterschiedliche Waffen an, aus denen der Spieler wählen kann.
+
+
 
 Der Versuch, einen Spielmodus zu finden oder zu entwickeln, scheitert an einem Problem, das fast alle denkbaren
 Spielmodi betrifft. Ohne eine Möglichkeit neben dem Bestreben, das eigene Spielziel möglichst schnell zu erreichen, auch
 den Gegner auf dem Weg zu seinem Spielziel aufzuhalten, verliert ein Multiplayer-Spiel seinen interaktiven Charakter und
 verkommt dann zu einem reinen Wettrennen. \\
 
-
-Der im Rahmen dieser Arbeit entwickelte Spiele-Prototyp hatte zu einem frühen Entwicklungszeitpunkt folgenden
-Spielablauf: Die Spielwelt bestand aus Bauklotz-ähnlichen Würfeln, die die Spieler beliebig umbauen konnten. Ziel war es
-ausgehend von einem Startpunkt als erster einen Zielpunkt zu erreichen. Dazu mussten Treppen, Brücken und andere
-Konstruktionen gebaut werden. Im Test mit mehreren Spielern zeigte sich, dass die Möglichkeit, dem Gegner Wände in den
-Weg zu bauen oder dessen Konstruktionen wieder zu zerlegen, nicht ausreichte um die Spieler zu motivieren. Ein Spieler
-äußerte sich folgendermaßen: "Mir fehlt was, um den anderen abzuknallen." Ebenso bot sich den Spielern kaum Raum,
-kooperativ vorzugehen, was sich an der Aussage eines anderen Spielers erkennen lässt: "Nein, ich wusste nicht, dass wir
-im gleichen Team sind".\\
 
 Nahkampf\\
 
