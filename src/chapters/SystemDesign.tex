@@ -1,0 +1,56 @@
+\chapter{System Design}
+\label{chapter:SystemDesign}
+
+\section{Wahl der Programmiersprache}
+
+Im Bereich der Computerspiele wird heute überwiegend C++ eingesetzt. Hauptgrund dafür ist die hohe Performance, außerdem
+die OO-Unterstützung und die Tatsache, dass die meisten Tools und Bibliotheken auf C++ basieren oder dazu kompatibel
+sind. Da das Ziel dieser Arbeit allerdings nicht die Entwicklung eines marktreifen AAA-Games, sondern vielmehr eines
+Prototypen war, konnte der Performance-Faktor weitgehend vernachlässigt werden. Bereits vorhandene Erfahrung im Umgang
+mit der Programmiersprache, den verfügbaren Libraries und der Entwicklungsumgebung, sowie die hohe Produktivität der
+Sprache sind entscheidend für die Wahl von Java verantwortlich.
+
+\section{Wahl der Engine}
+
+\subsection{Was ist eine Game-Engine?}
+Ein Computerspiel besteht meist aus einer Spielewelt, die optisch und aktustisch erlebt werden kann. Außerdem kann mit
+dieser Welt - je nach Spiel auf unterschiedliche Weise - interagiert werden. In vielen Spielen steuert der Spieler
+seinen Hauptcharakter, den sog. Avatar, durch diese Welt. Dazu werden Softwarebibliotheken benötigt, die
+dreidimensionalen Raumklang erzeugen, Objekte grafisch darstellen, physikalische Abläufe berechnen, Benutzereingaben in
+Steuerbefehle umwandeln, sowie Ereignisse über das Netzwerk kommunizieren. Eine Spiele-Engine bietet dem Entwickler
+diese und andere Funktionalitäten über ein einheitliches Interface an. Zum einen wird dadurch der Programmcode besser
+strukturiert, zum anderen der Entwickler entlastet.
+Es bietet sich dabei natürlich an, eine Engine für mehrere (ähnliche) Spiele zu verwenden. Einige Hersteller stellen
+ihre Engine anderen Entwicklern (teils gegen Lizenzgebühren) zur Verfügung. Bekannte Engines großer Spielehersteller
+sind die Frostbite-Engine (Dice), Cry-Engine (Crytec), Unreal-Engine (Epic), die neben dem Hauptspiel, für das sie
+entwickelt wurden, auch in weiteren Spielen verwendet wurden.
+
+Es ist natürlich möglich, ein Spiel ohne bereits existierende Game-Engine zu schreiben. Das führt allerdings in den
+meisten Fällen dazu, dass man eine eigene Engine innerhalb des Spiels entwickelt. Da heutzutage reichlich gute Engines
+verfügbar sind, einige davon sogar ohne Lizenzgebühren frei verwendbar, macht dieser Mehraufwand wenig Sinn. Vor allem
+ist zur Entwicklung einer guten Engine viel Erfahrung nötig, die die wenigsten Entwickler haben dürften.
+
+\subsection{Game-Engine für Java}
+Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden wäre
+über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu Java
+kompatibel oder gar in Java geschrieben sind.
+Die Auswahl ist nicht sehr groß, so lässt sich etwa in der Auflistung der Wikipedia schnell die Java MonkeyEngine als
+bestes Gesamtpaket identifizieren. Sie bietet alle nötigen Features\footnote{Liste aller Features der jMonkeyEngine3:
+http://jmonkeyengine.org/engine/}, ist schon in der dritten Version verfügbar, somit ist von einem Gewissen Reifegrad
+auszugehen, sie ist frei verwendbar unter der BSD-Lizenz und sie rendert mithilfe der Java-OpenGL-Anbindung
+JOGL\footnote{siehe: https://jogamp.org/jogl/www/}, was eine gewisse Grafikperformance erwarten lässt.
+
+
+\section{Architektur}
+
+Das Spiel besteht Serverkomponente, die für die Berechnung der virtuellen Welt und der Spielabläufe verantwortlich ist,
+sowie einer Clientkomponente, welche die virtuelle Welt audiovisuell darstellt und Benutzereingaben verarbeitet.
+
+\section{Hardware-Software Mapping}
+
+Das Spiel kann entweder im Internet oder im lokalen Netzwerk gespielt werden. Im ersten Fall läuft die Serversoftware
+auf einem gehosteten Server im Internet, der per IP-Adresse oder Domain erreichbar ist. Im zweiten Fall läuft die
+Server-Software auf einem der PCs der Spieler oder einem extra dafür eingerichteten zusätzlichem Rechner/Server. Die
+Clientsoftware wird in beiden Fällen auf dem Computer jedes Spielers gestartet. Technisch ist es möglich, beliebig viele
+Instanzen der Clientsoftware auf einer Maschine laufen zu lassen, jedoch stets nur eine Instanz der Server-Software, da
+diese festgelegte Ports reserviert.
