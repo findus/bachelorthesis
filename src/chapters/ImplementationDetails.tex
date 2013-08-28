@@ -13,13 +13,17 @@ Die wichtigsten Aufgaben des Netzwerkcodes sind:
 \item Senden von Updates über den aktuellen Bewegungszustand / die aktuelle Position dynamischer Objekte zum Client.
 \end{itemize}
 
-Die jMonkeyEngine 3 enthält zu diesem Zweck das SpiderMonkey Paket, das die Übertragung von Nachrichten per TCP oder UDP
-ermöglicht. Die Übertragung ist threadsafe und unterstützt optional eine Komprimierung der Daten. Jeder benötigte
-Nachrichtentyp wird als Klasse implementiert, die von einer abstrakten Message-Klasse erbt. Die Felder der Klasse dienen
-zur Übertragung von zusätzlichen Werten. Aus Benutzereingaben resultierende Steuerbefehle werden zum Beispiel per
-InputMessage an der Server geschickt. Die Klasse InputMessage hat drei Felder: playerid enthält die ID des Spielers,
-command beschreibt die gewünschte Funktion (z.B. "move forward") und value gibt an, ob die zugehörige Taste gedrückt
-oder losgelassen wurde.\\
+Der Netzcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleineres Spiel
+ausschließlich als Testplatform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
+im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios \cite{gamestarmythos}.
+
+Die jMonkeyEngine 3 enthält für die Entwicklung von Netzwerkspielen das SpiderMonkey Paket, das die Übertragung von
+Nachrichten per TCP oder UDP ermöglicht. Die Übertragung ist threadsafe und unterstützt optional eine Komprimierung der
+Daten. Jeder benötigte Nachrichtentyp wird als Klasse implementiert, die von einer abstrakten Message-Klasse erbt. Die
+Felder der Klasse dienen zur Übertragung von zusätzlichen Werten. Aus Benutzereingaben resultierende Steuerbefehle
+werden zum Beispiel per InputMessage an der Server geschickt. Die Klasse InputMessage hat drei Felder: playerid enthält
+die ID des Spielers, command beschreibt die gewünschte Funktion (z.B. "move forward") und value gibt an, ob die
+zugehörige Taste gedrückt oder losgelassen wurde.\\
 
 Drückt zum Beispiel ein Spieler die Taste "w", ermittelt das Input-Mapping den Steuerbefehl "move forward". Daraus wird
 eine InputMessage erstellt, die die ID des Spielers, den Befehl "move forward" sowie einen Parameter, der das Drücken
@@ -27,7 +31,7 @@ eine InputMessage erstellt, die die ID des Spielers, den Befehl "move forward" s
 verarbeitet die erhaltene Nachricht im nächsten Zyklus und simuliert in den folgenden Zyklen die
 Vorwärtsbewegung des Spielers.\\
 
-In regelmäßigen Abständen (standartmäßig alle 50 ms) generiert der Server ein sog Snapshot der virtuellen Welt. Dieser
+In regelmäßigen Abständen (standartmäßig alle 50 ms) generiert der Server einen sog. Snapshot der virtuellen Welt. Dieser
 enthält die Positionen und Bewegungsrichtungen aller dynamischen Objekte. Eine Nachricht, die den Snapshot enthält wird
 an die Clients geschickt, die ihre Simulation entsprechend anpassen, um die neuen Informationen zu berücksichtigen.\\
 
@@ -50,7 +54,3 @@ verständliche Dokumentation der funktionsweise ihres Netzcodes veröffentlicht. D
 Techniken Entity-Interpolation, Input-Prediction und Lag-Compensation. Zusammengenommen erreichen diese Techniken einen
 deutlich höheren Wirkungsgrad. Die Implementierung bedeutet jedoch hohen Aufwand, weswegen bei der vorliegenden Arbeit
 auf eine Umsetzung verzichtet wurde.\\
-
-Der Netzcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleineres Spiel
-ausschließlich als Testplatform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
-im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios \cite{gamestarmythos}.
