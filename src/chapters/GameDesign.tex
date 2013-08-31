@@ -1,11 +1,10 @@
-\chapter{Game Design}
-\label{chapter:GameDesign}
+\section{Game Design}
 
 In diesem Kapitel soll aus den gefunden Anforderungen ein Spiel-Konzept erstellt werden. Um Verwirrungen zu vermeiden,
 erhält das neue Spiel bereits an dieser Stelle einen Namen, sozusagen einen Entwicklungs-Codenamen: Cydonia.
 
 
-\section{Grundlegende Eigenschaften}
+\subsection{Grundlegende Eigenschaften}
 Cydonia soll ein Multiplayerspiel für ca. 5 bis 25 Spieler werden. Vorerst ist nur eine Unterstützung für
 Local-Area-Network (LAN) nötig, eine zukünftige Unterstützung von Spielen über das Internet ist jedoch nicht auszuschließen.
 
@@ -18,12 +17,12 @@ mehr kreativen Freiraum als ein reales, da unwahrscheinliche oder unmögliche Din
 den Spieler weniger irritierend wirken, wenn die gesamte Spielwelt bereits unrealistisch anmutet.
 
 
-\section{Spielwelt}
+\subsection{Spielwelt}
 Die virtuelle Welt von Cydonia besteht fast ausschließlich aus farbigen Würfeln mit einem Meter Kantenlänge. Diese
 Würfel bilden Böden, Wände und Dächer. Die Spieler können eine Würfelhöhe überspringen, wodurch auch Treppen möglich
 werden.
 
-\section{Spielmodus}
+\subsection{Spielmodus}
 Auf der Suche nach einem gewaltfreien Spielmodus wurden bereits existierende Shooter untersucht:
 
 Counterstrike lässt die Teams zum Beispiel durch Bewachen/Befreien von Geiseln bzw. durch Legen/Entschärfen einer Bombe
@@ -41,29 +40,26 @@ eigenen Basis bringen, um Punkte zu erzielen. Gleichzeitig sollten sie verhinder
 klauen kann.
 
 
-\section{Ersatz für Schießen}
-Auf der Suche nach einem Spielelement, das das direkte Einwirken auf den Gegner aus der Ferne ermöglicht, das Schießen
-also auf angemessene Weise ersetzt, wurden verschiedene Spielelemente entwickelt. Die drei Elemente der folgenden Liste
-haben gemeinsam, dass es sich jeweils um ein Equipment handelt, ein Werkzeug, das der Spieler in seinen virtuellen
-Händen halten und damit steuern und benutzen kann. In der realen Welt fallen unter diese Beschreibung verschiedenste
-Objekte, vom Handrührgerät in der Küche, über die Grillzange, die Papierschere und den Akkuschrauber bis hin zur
-Pistole. Die in Shootern zur Verfügung stehenden Objekte, können meist unter dem Begriff "Waffen" zusammengefasst
-werden. Dieser Begriff ist selbstverständlich für das angestrebte gewaltfreie Spiel ungeeignet, weshalb in diesem
-Kontext der Begriff "Equipment" (engl. für "Ausrüstung") verwendet werden soll.
-\begin{itemize} 
-\item Beam-Strahl: Gegner können mittels eines Strahls zurück zum Ausgangspunkt gebeamt werden. Der Strahl ähnelt stark
-einer futuristischen Laserwaffe.
-\item Schub-Strahl: Gegner können mittels einer Druckwelle weggeschubst werden.
-\item Swapper: Der Spieler kann Gegenstände und andere Spieler markieren. Sobald er zwei Dinge markiert hat, tauschen
-diese beiden den Platz.
-\end{itemize}
+\subsection{Swapper}
+Spieler haben in First-Person-Spielen meist Werkzeuge zur Verfügung, die ihr Avatar in seinen virtuellen Händen halten
+und damit steuern und benutzen kann, um die virtuelle Welt zu beeinflussen. In der realen Welt fallen unter diese
+Beschreibung verschiedenste Objekte, vom Handrührgerät in der Küche, über die Grillzange, die Papierschere und den
+Akkuschrauber bis hin zur Pistole. Die in Shootern zur Verfügung stehenden Objekte können meist unter dem Begriff
+"Waffen" zusammengefasst werden. Dieser Begriff ist selbstverständlich für das angestrebte gewaltfreie Spiel ungeeignet,
+weshalb in diesem Kontext der Begriff "Equipment" (engl. für "Ausrüstung") verwendet werden soll. Ein solches Equipment
+soll in Cydonia die Funktion der Waffen in anderen Shootern übernehmen, dem Spieler also eine direkte Einwirkung auf den
+Gegner ermöglichen. Mit dem sog. "Swapper" kann der Spieler Gegenstände und andere Spieler markieren. Sobald er zwei
+Dinge markiert hat, tauschen diese beiden den Platz. Dadurch kann der Spieler also seine Gegner von ihrem Pfad abbringen
+und in der Erfüllung ihres Auftrags behindern. Gleichzeitig bietet sich aber auch die Möglichkeit, durch geschicktes
+"Swappen" von Mitgliedern des eigenen Teams kooperativ zu agieren. Eine dritte Art der Verwendung besteht darin, durch
+das Vertauschen von Teilen der Spielwelt, das Leveldesign zu seinem Vorteil zu verändern.
 
 
-\section{Pick'n'Place}
-Der Spieler bekommt in Cydonia ein weiteres Werkzeug in die Hand, das nicht auf Gegner, sondern ausschließlich auf die
+\subsection{Pick'n'Place}
+Der Spieler bekommt in Cydonia ein weiteres Equipment in die Hand, das nicht auf Gegner, sondern ausschließlich auf die
 Würfel angewendet werden kann, aus denen sich die virtuelle Welt zusammensetzt. Er kann damit einzelne Würfel in seiner
 Umgebung entfernen und (an anderer Stelle) wieder einfügen und so das Leveldesign während des Spiels beeinflussen.
 
 
-\section{Nahkampf}
+\subsection{Nahkampf}
 Für diese wichtige Anforderung wurde noch keine Lösung gefunden.
