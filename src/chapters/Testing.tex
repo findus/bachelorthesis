@@ -1,11 +1,11 @@
-\chapter{Testing}
-\label{chapter:Testing}
+\section{Testing}
 
+Um bestimmte Designentscheidungen zu erleichtern, wurde ein Prototyp entwickelt, an dem bestimmte Features, teils in verschiedenen Varianten, getestet wurden.
 
-\section{Anwendertests}
+\subsection{Usability Tests}
 
-Mehrfach während der Entwicklung wurde das Spiel Testpersonen vorgesetzt. Diese sollten ohne weitere Vorbereitung spielen und ihre Erfahrungen dann mitteilen.
-Dabei wurden viele wesentliche Probleme und Schwachstellen aber auch positive und erhaltenswerte Elemente identifiziert. Die wichtigsten davon sollen im folgenden erläutert werden.
+Mehrfach während der Entwicklung wurde der Prototyp Testpersonen vorgesetzt. Diese sollten ohne weitere Vorbereitung
+spielen und ihre Erfahrungen dann mitteilen. 
 
 Der im Rahmen dieser Arbeit entwickelte Spiele-Prototyp hatte zu einem frühen Entwicklungszeitpunkt folgenden
 Spielablauf: Die Spielwelt bestand aus Bauklotz-ähnlichen Würfeln, die die Spieler beliebig umbauen konnten. Ziel war es
@@ -15,3 +15,17 @@ Weg zu bauen oder dessen Konstruktionen wieder zu zerlegen, nicht ausreichte um 
 äußerte sich folgendermaßen: "Mir fehlt was, um den anderen abzuknallen." Ebenso bot sich den Spielern kaum Raum,
 kooperativ vorzugehen, was sich an der Aussage eines anderen Spielers erkennen lässt: "Nein, ich wusste nicht, dass wir
 im gleichen Team sind".
+
+%Meine Freundin ist ein Weinbeer, ein armes trauriges Beerchen. Aber KEIN Pombär!!! Vernaschen kann ich sie trotzdem. Manchmal! Glaaaabst! Jawooohhhl!
+\subsubsection{Lanparty}
+
+Auf einer Lanparty wurde den Spielern eine Entwicklungsversion des Prototypen zur Verfügung gestellt, damit sie das
+Spiel ausprobieren. Es waren etwa 20 Spieler anwesend, jeder mit seinem eigenen PC. Die Spieler konnten die Anwendung
+über Java-Webstart von einem lokalen Web-Server starten. Nachdem anfängliche Schwierigkeiten beim Starten des Spiels,
+konnten sieben Spieler gemeinsam in einer Instanz spielen. Die Features in dieser Version umfassten einen Serverbrowser, Teamwahlmenü, Pausemenü mit Beenden-Button. Als Equipments standen dem Spieler Pick'n'Place sowie der Beamer zur Verfügung.
+Folgende Ergebnisse lassen sich festhalten:
+\itemize{begin}
+\item 1. Da die automatische Serversuche (mittels Multicast) nicht auf allen PCs funktioniert, müssen viele Spieler die IP-Adresse des Servers manuell eingeben, was sie offensichtlich überfordert.
+\item 2. Die Steuerung ist nicht für alle Spieler intuitiv genug. Umsehen mit der Maus ist für alle Spieler bekannt. Bewegen mit WASD ebenso. Springen mit Shift versuchen nur die wenigsten, die meisten erwarten die Leertaste zum Springen. 
+\item 3. Das Icon für das aktuelle Equipment rechts unten auf dem Bildschirm erklärt nicht ausreichend die Funktionsweise des Equipments.
+\item 4. Die 

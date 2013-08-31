@@ -1,5 +1,4 @@
-\chapter{System Design}
-\label{chapter:SystemDesign}
+\section{System Design}
 
 Im Rahmen dieser Arbeit wurden nicht nur das Problem der Gewaltdarstellungen in Shootern untersucht und ein Konzept
 erarbeitet, wie Shooter auch ohne diese auskommen können, sondern auch ein Prototyp eines gewaltfreien Shooters
@@ -7,7 +6,7 @@ entwickelt. Das hat im wesentlichen den Zweck, alte und neue Ideen und Konzepte 
 Papier oder im Kopf konstruiertes Spielelement offenbart im implementierten Einsatz bei Testspielern gänzlich neue
 Seiten. Nur so kann ein entwickeltes Spielkonzeptes ernsthaft validiert werden.\\
 
-\section{Wahl der Programmiersprache}
+\subsection{Wahl der Programmiersprache}
 Im Bereich der Computerspiele wird heute überwiegend C++ eingesetzt. Hauptgrund dafür ist die hohe Performance, außerdem
 die OO-Unterstützung und die Tatsache, dass die meisten Tools und Bibliotheken auf C++ basieren oder dazu kompatibel
 sind. Da das Ziel dieser Arbeit allerdings nicht die Entwicklung eines marktreifen AAA-Games, sondern vielmehr eines
@@ -15,9 +14,9 @@ Prototypen war, konnte der Performance-Faktor weitgehend vernachlässigt werden. 
 mit der Programmiersprache, den verfügbaren Libraries und der Entwicklungsumgebung, sowie die hohe Produktivität der
 Sprache sind entscheidend für die Wahl von Java verantwortlich.
 
-\section{Wahl der Engine}
+\subsection{Wahl der Engine}
 
-\subsection{Was ist eine Game-Engine?}
+\subsubsection{Was ist eine Game-Engine?}
 Ein Computerspiel besteht meist aus einer Spielewelt, die optisch und aktustisch erlebt werden kann. Außerdem kann mit
 dieser Welt - je nach Spiel auf unterschiedliche Weise - interagiert werden. In vielen Spielen steuert der Spieler
 seinen Hauptcharakter, den sog. Avatar, durch diese Welt. Dazu werden Softwarebibliotheken benötigt, die
@@ -35,7 +34,7 @@ meisten Fällen dazu, dass man eine eigene Engine innerhalb des Spiels entwickelt
 verfügbar sind, einige davon sogar ohne Lizenzgebühren frei verwendbar, macht dieser Mehraufwand wenig Sinn. Vor allem
 ist zur Entwicklung einer guten Engine viel Erfahrung nötig, die die wenigsten Entwickler haben dürften.
 
-\subsection{Game-Engine für Java}
+\subsubsection{Game-Engine für Java}
 Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden wäre
 über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu Java
 kompatibel oder gar in Java geschrieben sind.
@@ -46,12 +45,12 @@ auszugehen, sie ist frei verwendbar unter der BSD-Lizenz und sie rendert mithilf
 JOGL\footnote{siehe: https://jogamp.org/jogl/www/}, was eine gewisse Grafikperformance erwarten lässt.
 
 
-\section{Architektur}
+\subsection{Architektur}
 
 Das Spiel besteht Serverkomponente, die für die Berechnung der virtuellen Welt und der Spielabläufe verantwortlich ist,
 sowie einer Clientkomponente, welche die virtuelle Welt audiovisuell darstellt und Benutzereingaben verarbeitet.
 
-\section{Hardware-Software Mapping}
+\subsection{Hardware-Software Mapping}
 
 Das Spiel kann entweder im Internet oder im lokalen Netzwerk gespielt werden. Im ersten Fall läuft die Serversoftware
 auf einem gehosteten Server im Internet, der per IP-Adresse oder Domain erreichbar ist. Im zweiten Fall läuft die
