@@ -15,18 +15,18 @@ Die wichtigsten Aufgaben des Netzwerkcodes sind:
 
 Der Netzcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleineres Spiel
 ausschließlich als Testplatform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
-im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios \cite{gamestarmythos}.
+im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios \cite{Mythos}.
 
 Die jMonkeyEngine 3 enthält für die Entwicklung von Netzwerkspielen das SpiderMonkey Paket, das die Übertragung von
 Nachrichten per TCP oder UDP ermöglicht. Die Übertragung ist threadsafe und unterstützt optional eine Komprimierung der
 Daten. Jeder benötigte Nachrichtentyp wird als Klasse implementiert, die von einer abstrakten Message-Klasse erbt. Die
 Felder der Klasse dienen zur Übertragung von zusätzlichen Werten. Aus Benutzereingaben resultierende Steuerbefehle
 werden zum Beispiel per InputMessage an der Server geschickt. Die Klasse InputMessage hat drei Felder: playerid enthält
-die ID des Spielers, command beschreibt die gewünschte Funktion (z.B. "move forward") und value gibt an, ob die
+die ID des Spielers, command beschreibt die gewünschte Funktion (z.B. "`move forward"') und value gibt an, ob die
 zugehörige Taste gedrückt oder losgelassen wurde.\\
 
-Drückt zum Beispiel ein Spieler die Taste "w", ermittelt das Input-Mapping den Steuerbefehl "move forward". Daraus wird
-eine InputMessage erstellt, die die ID des Spielers, den Befehl "move forward" sowie einen Parameter, der das Drücken
+Drückt zum Beispiel ein Spieler die Taste "`w"', ermittelt das Input-Mapping den Steuerbefehl "`move forward"'. Daraus wird
+eine InputMessage erstellt, die die ID des Spielers, den Befehl "`move forward"' sowie einen Parameter, der das Drücken
 (im Gegensatz zum Loslassen) der Taste kennzeichnet. Diese Nachricht wird an den Server geschickt. Der Server
 verarbeitet die erhaltene Nachricht im nächsten Zyklus und simuliert in den folgenden Zyklen die
 Vorwärtsbewegung des Spielers.\\

@@ -1,0 +1,15 @@
+\section{Dynamisches Modell}
+
+Das dynamische Modell beschreibt die Interaktionen zwischen den Entitäten des statischen Modells.
+
+\subsection{Neuer Spieler tritt bei}
+Wenn eine neuer Spieler dem Spiel beitritt, muss er sich zunächst beim Server melden. Dieser erstellt ein neues
+Spieler-Objekt und informiert die bereits vorhandenen Client-Instanzen über den Beitritt und die Daten des neuen
+Spielers.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{images/sequence_player_joins}
+\caption[Sequenzdiagramm "`Beitritt eines Spielers"']{Sequenzdiagramm "`Beitritt eines Spielers"'}
+\label{sequence_player_joins}
+\end{figure}
