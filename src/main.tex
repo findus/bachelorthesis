@@ -14,7 +14,7 @@
  
 %% Draft document mode
 %% Final document
-\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR12mm,DIV13]{scrbook}
+\documentclass[11pt,a4paper,twoside]{report}
 
 %\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR20mm,DIV10]{scrbook}
 
@@ -44,39 +44,43 @@
 \makeglossary
 
 \begin{document}
+\setlength{\evensidemargin}{22pt}
+\setlength{\oddsidemargin}{22pt}
+\parindent 0pt
 
-	\frontmatter
-	
-	
-	\input{components/cover}
-%	\clearemptydoublepage
-%	
-%	\input{components/titlepage}
-	
-	
-%	\input{components/cover_maschmeyer}
-	\clearemptydoublepage
-	
-	\input{components/titlepage}
-	
-	
-	\input{components/disclaimer}
-	
-	\input{components/acknowledgements}
-	
-	\input{components/abstract}
+%\frontmatter
 
-	\tableofcontents
-  
-  %\input{components/outline}
+\pagestyle{empty}
 
-	\mainmatter
-	
-	
-		\input{components/text}
-	
+\input{components/cover}
 
-  \clearemptydoublepage
+\clearemptydoublepage
+\input{components/titlepage}
+
+\clearemptydoublepage
+\input{components/disclaimer}
+
+\clearemptydoublepage
+\input{components/acknowledgements}
+
+\clearemptydoublepage
+\input{components/abstract}
+
+% beginne schönen page style mit kopfzeile
+\pagestyle{fancy}
+\fancyhead[LE]{\slshape \leftmark}
+\fancyhead[LO,RE]{}
+\fancyhead[RO]{\slshape \rightmark}
+\fancyfoot[C]{\thepage}
+\headheight=15pt
+\tableofcontents
+
+%\input{components/outline}
+
+%\mainmatter
+\input{components/text}
+
+\clearemptydoublepage
 
 \listoffigures
 

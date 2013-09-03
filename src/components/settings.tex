@@ -1,14 +1,16 @@
 % Included by MAIN.TEX
 % Defines the settings for the CAMP report document
 
-\renewcommand{\sectfont}{\normalfont \bfseries}        % Schriftart der Kopfzeile
+%\renewcommand{\sectfont}{\normalfont \bfseries}        % Schriftart der Kopfzeile
 
 % manipulate footer
-\usepackage{scrpage2}
-\pagestyle{scrheadings}
-\ifoot[\footertext]{\footertext} % \footertext set in INFO.TEX
+%\usepackage{scrpage2}
+%\pagestyle{scrheadings}
+%\ifoot[\footertext]{\footertext} % \footertext set in INFO.TEX
 %\setkomafont{pagehead}{\normalfont\rmfamily}
-\setkomafont{pagenumber}{\normalfont\rmfamily}
+%\setkomafont{pagenumber}{\normalfont\rmfamily}
+
+\usepackage{fancyhdr}
 
 %% allow sophisticated control structures
 \usepackage{ifthen}
@@ -26,7 +28,7 @@
 \usepackage{subfigure}
 
 
-\usepackage{colortbl}
+%\usepackage{colortbl}
 
 
 %% show program code\ldots
@@ -43,24 +45,24 @@
 \usepackage{color}
 
 %% make fancy math
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{textcomp}
-\usepackage{yhmath} % für die adots 
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{textcomp}
+%\usepackage{yhmath} % für die adots 
 %% mark text as preliminary
 %\usepackage[draft,german,scrtime]{prelim2e}
 
 %% create an index
-\usepackage{makeidx}
+%\usepackage{makeidx}
 
 % for the program environment
 \usepackage{float}
 
 %% load german babel package for german abstract
 %\usepackage[german,american]{babel}
-\usepackage[english,german]{babel}
-\selectlanguage{german}
+\usepackage[english,ngerman]{babel}
+\selectlanguage{ngerman}
 
 % use german characters as well
 \usepackage[latin1]{inputenc}       % allow Latin1 characters
@@ -69,7 +71,7 @@
 %\usepackage{dropping}
 
 
-\usepackage{styles/shortoverview}
+%\usepackage{styles/shortoverview}
 %----------------------------------------------------
 %      Graphics and Hyperlinks
 %----------------------------------------------------
@@ -98,10 +100,7 @@
  %% use pdf or jpg graphics
  \usepackage[pdftex]{graphicx}
  \DeclareGraphicsExtensions{.jpg,.JPG,.png,.pdf,.eps}
- \graphicspath{{figures/}} 
- 
- %% Load float package, for enabling floating extensions
- \usepackage{float}
+ %\graphicspath{{figures/}} 
  
  %% allow rotations
  \usepackage{rotating}
@@ -136,4 +135,4 @@
 % set the bibliography style
 %\bibliographystyle{styles/bauermaNum}
 %\bibliographystyle{alpha}
-\bibliographystyle{plaindin}
+\bibliographystyle{apalike}
