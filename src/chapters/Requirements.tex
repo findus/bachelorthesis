@@ -1,3 +1,63 @@
 \section{Anforderungen}
 \label{requirements}
 
+\subsection{Funktionale Anforderungen}
+
+\subsubsection{FR 1: Darstellung der virtuelle Welt}
+Das Spiel muss die virtuelle Spielwelt, bestehend aus farbigen Würfeln, Flaggenpunkten und Spielern grafisch
+dreidimensional darstellen. Der Anwender soll dabei die virtuelle Welt aus der Perspektive seines Avatars sehen.
+
+\subsubsection{FR 2: Auswahl der Spielwelt}
+Das Spiel muss dem Anwender die Möglichkeit bieten, unter verschiedenen Spielwelten, sog. Karten, zu wählen.
+
+\subsubsection{FR 3: Steuerung}
+Das Spiel muss Eingaben des Anwenders via Maus und Tastatur zur Steuerung des Avatars umsetzen. Dazu gehört:
+\begin{itemize}
+  \item Bewegen in vier Richtungen
+  \item Springen
+  \item Umsehen in alle Richtungen
+  \item Wechseln des Equipments
+  \item Benutzen des Equipments
+\end{itemize}
+
+\subsubsection{FR 4: Ablauf}
+Das Spiel muss rundenweise ablaufen. Die Ausgangssituation der Spielwelt sowie der Avatare muss jede Runde gleich sein.
+Jede Runde endet nach einer bestimmten Zeit oder, wenn ein Team eine bestimmte Anzahl Punkte erreicht.
+Ausschlaggebend ist das Ereignis, das früher eintritt.
+
+
+\subsection{Nicht-funktionale Anforderungen}
+\subsubsection{Usability}
+Im Bereich der Spiele-Entwicklung könnendie nach ISO-Standart üblichen Maßstäbe für Usability, Effektivität (die
+Genauigkeit und Vollständigkeit mit der Benutzer ihre gesetzten Ziele erreichen), Effizienz (die Ressourcen, die zur
+Erfüllung der Vorgaben eingesetzt werden) und die Zufriedenheit des Benutzers, nicht auf die gesamte Software (in diesem
+Fall das Spiel) angewendet werden. Da ein Spiel möglichst lange unterhalten soll, ist Effizienz, im Sinne möglichst
+schneller Erledigung, hinfällig. Außerdem haben Spiele oft keinen definierten Endpunkt, an dem das Spiel als
+abgeschlossen gilt. Wenn sie einen solchen Endpunkt besitzen, gibt es oft viele Wege, diesen zu
+erreichen.\cite{Federoff_2002} Man kann allerdings die übliche Heuristik durchaus auch auf Spiele anwenden, wenn man
+lediglich das Interface betrachtet.\\
+
+Vor allem in schnellen Spielen, zu denen Shooter tendenziell immer gehören, ist es für den Spieler wichtig, alle im
+Spielfluss benötigten Funktionen per einfachen Tastendruck zu erreichen. Nicht umsonst ist bei der für Shooter üblichen
+Steuerung Zielen und Abfeuern der Waffe in einer Hand, der "`Maushand"', vereint. Gleichzeitig übernimmt die andere Hand
+alle für die Bewegung des Avatars nötigen Eingaben: vorwärts, rückwärts, seitwärts, springen, ducken usw.. Seltener
+gebrauchte Funktionen werden meist ebenso mit schlechter erreichbaren Tasten verbunden, wie Funktionen, bei denen die
+Reaktionsgeschwindigkeit nicht allzu spielentscheidend ist.\\
+
+Zur Usability gehört aber nicht nur die schnelle und einfach Eingabe von Befehlen, sondern auch die Übersichtlichkeit
+der grafischen Anzeige. Da Spieler in dreidimensionalen Spielen stark auf die Darstellung der virtuellen Welt fokusiert
+sind, müssen zusätzliche Informationen (wie übrige Zeit, Punktestand, Position der Teammitglieder, \ldots) jederzeit
+übersichtlich und mit starkem Kontrast zum Hintergrund dargestellt werden, sodass der Spieler mit einem kurzen Blick
+alle nötigen Imformationen erhalten kann.\\
+
+Und schließlich ist auch in Spielen die einfache Bedienbarkeit aller Menüs von Bedeutung. Dazu müssen die einzelnen
+Optionen sinnvoll gruppiert und mit möglichst wenigen Klicks erreichbar sein.
+
+\subsubsection{Security}
+Da es sich um ein Multiplayer-Spiel handelt, muss gewährleistet werden, dass kein Spieler sich auf unfaire Weise einen
+Vorteil verschaffen kann.
+
+\subsubsection{Performance}
+Performance bezieht sich in diesem Fall auf das Simulieren (u.a. Physikberechnung) und Rendern der virtuellen Welt, da
+diese typischer Weise die Flaschenhälse in der Spiele-Software sind. Um dem Spieler ein flüssiges Spielerlebnis zu
+ermöglichen und die Immersion nicht zu stören, sollte die Bildwiederholrate nie unter 30 fps (Frames per second) fallen.
