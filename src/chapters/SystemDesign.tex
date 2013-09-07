@@ -1,24 +1,68 @@
-\chapter{System Design}
+\chapter{Systementwurf}
 \label{chapter:SystemDesign}
 
+\section{Systemzerlegung}
+Bei der Systemzerlegung wird das System, basierend auf dem Anwendungsfall- und dem Analysemodell, in kleinere
+Bestandteile zerlegt\cite[S. 257]{Bruegge_2004}.\\
 
-Im Rahmen dieser Arbeit wurden nicht nur das Problem der Gewaltdarstellungen in Shootern untersucht und ein Konzept
-erarbeitet, wie Shooter auch ohne diese auskommen können, sondern auch ein Prototyp eines gewaltfreien Shooters
-entwickelt. Das hat im wesentlichen den Zweck, alte und neue Ideen und Konzepte leicht testen zu können. Ein auf dem
-Papier oder im Kopf konstruiertes Spielelement offenbart im implementierten Einsatz bei Testspielern gänzlich neue
-Seiten. Nur so kann ein entwickeltes Spielkonzeptes ernsthaft validiert werden.\\
+Das System wurde in folgende Pakete zerlegt: Player, Equipment, GameWorld, GameController, Input.
+Die Pakete Player und Equipment enthalten jeweils die zur Abbildung und Berechnung der Spieler bzw. der verschiedenen
+Equipments benötigten Klassen.\\
 
-\subsection{Wahl der Programmiersprache}
-Im Bereich der Computerspiele wird heute überwiegend C++ eingesetzt. Hauptgrund dafür ist die hohe Performance, außerdem
-die OO-Unterstützung und die Tatsache, dass die meisten Tools und Bibliotheken auf C++ basieren oder dazu kompatibel
-sind. Da das Ziel dieser Arbeit allerdings nicht die Entwicklung eines marktreifen AAA-Games, sondern vielmehr eines
-Prototypen war, konnte der Performance-Faktor weitgehend vernachlässigt werden. Bereits vorhandene Erfahrung im Umgang
-mit der Programmiersprache, den verfügbaren Libraries und der Entwicklungsumgebung, sowie die hohe Produktivität der
-Sprache sind entscheidend für die Wahl von Java verantwortlich.
+Das Paket GameWorld fasst alle Klassen zusammen, die für die Generierung, Komposition, Simulation und Darstellung der
+Spielwelt verantwortlich sind. Dazu gehören die Entitäten für die Weltobjekte (Cube, Flagge, Spawnpunkt) sowie
+Kontrollklassen, Fabriken und Schnittstellen.\\
 
-\subsection{Wahl der Engine}
+Das Pakte Input enthält die Klassen zur Verarbeitung von Benutzereingaben. Unter anderem werden darin variable
+Tastenbelegungen und die Erzeugung von Steuerbefehle implementiert.\\
 
-\subsubsection{Was ist eine Game-Engine?}
+Im Paket GameController befinden sich schließlich alle Klassen, die zur Verwaltung und Steuerung von Programmzuständen,
+Menüs und ?. Außerdem wird hier auch die Logik, also der eigentliche Ablauf, des Spiels umgesetzt.\\
+
+Eine Übersicht über die Paketstruktur von Cydonia gibt auch Abbildung \ref{global_control_flow}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{images/global_control_flow}
+\caption[Diagramm: Globaler Kontrollfluss]{Diagramm: Globaler Kontrollfluss}
+\label{global_control_flow}
+\end{figure}
+
+\section{Globaler Kontrollfluss}
+Der für Computerspiele typische Kontrollfluss geht vom Spieler aus, der mit seinen Eingaben Ereignisse auslöst.
+Beispielsweise könnte der Spieler eine Taste drücken, mit dem Ziel einen Cube (mithilfe des Pick'n'Place-Equipments) in
+der Spielwelt zu platzieren. Dieser Tastendruck wird vom Paket Input detektiert und in einen Steuerbefehl umgesetzt.
+Dieser Steuerbefehl, etwa "`benutze equipment"' wird an das GameController-Paket weitergereicht. Dieses ermittelt die
+daraus resultierende Reaktion, nämlich dem Player-Paket den Befehl zu geben, das aktuelle Equipment des Spielers zu
+ermitteln und dessen Benutzung anzustoßen, wodurch der Befehl im Equipment-Paket landet. Dort ist die auszuführende
+Aktion für das Pick'n'Place-Equipment implementiert (Rückmeldungen für den Spieler, Manipulation der Spielwelt usw.).
+Das Equipment-Paket meldet folglich dem GameController-Paket die gewünschte Manipulation der Spielwelt, nämlich das
+platzieren des im Equipment vorrätigen Cubes an einer bestimmten Position. Letzendlich wird die Platzierung des Cubes im
+Paket GameWorld ausgeführt und der Spieler kann den neuen Cube sehen. Dieser beispielhafte Ablauf kann auch anhand der
+Nummerierung in Abbildung \ref{global_control_flow} nachvollzogen werden.
+
+\subsection{Hardware-Software Mapping}
+Cydonia ist als Multiplayer-Spiel so konzipiert, dass mehrere Spieler zusammen in einer virtuellen Umgebung spielen.
+Dabei nutzt jeder Spieler seinen eigenen Personal Computer (PC) (wie bei einem Singleplayer-Spiel) und die virtuelle
+Welt wird zwischen den einzelnen Computern synchronisiert, damit alle Spieler den Lauf der Dinge konsistent erleben.
+Dazu ist ein sog. Server nötig, eine Instanz des Spiels, die die Authorität über die Geschehnisse in der virtuellen Welt
+besitzt, da sonst durch geringfügige Abweichungen in der Berechnung enorme Unterschiede zwischen den Simulationen auf
+den einzelnen Computern entstehen können. Dieser Server kann bei ausreichender Rechenleistung auch auf einem der PCs der
+Spieler laufen, der Einfachkeit halber soll im folgenden jedoch nur der Fall eines dedizierten Servers betrachtet
+werden. Abbildung \ref{hardware_mapping} veranschaulicht die Verteilung der Software-Komponenten auf die
+Hardware-Knoten.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{images/hardware_mapping}
+\caption[UML-Verteilungsdiagramm: Beziehung zwischen Software-Komponenten und Hardware-Knoten]{UML-Verteilungsdiagramm: Beziehung zwischen Software-Komponenten und Hardware-Knoten}
+\label{hardware_mapping}
+\end{figure}
+
+
+\section{Wahl der Engine}
+
+\subsection{Was ist eine Game-Engine?}
 Ein Computerspiel besteht meist aus einer Spielewelt, die optisch und aktustisch erlebt werden kann. Außerdem kann mit
 dieser Welt - je nach Spiel auf unterschiedliche Weise - interagiert werden. In vielen Spielen steuert der Spieler
 seinen Hauptcharakter, den sog. Avatar, durch diese Welt. Dazu werden Softwarebibliotheken benötigt, die
@@ -36,27 +80,14 @@ meisten Fällen dazu, dass man eine eigene Engine innerhalb des Spiels entwickelt
 verfügbar sind, einige davon sogar ohne Lizenzgebühren frei verwendbar, macht dieser Mehraufwand wenig Sinn. Vor allem
 ist zur Entwicklung einer guten Engine viel Erfahrung nötig, die die wenigsten Entwickler haben dürften.
 
-\subsubsection{Game-Engine für Java}
-Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden wäre
-über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu Java
-kompatibel oder gar in Java geschrieben sind.
-Die Auswahl ist nicht sehr groß, so lässt sich etwa in der Auflistung der Wikipedia schnell die Java MonkeyEngine als
+\subsection{Game-Engine für Java}
+Da Cydonia ausschließlich in Java entwickelt werden soll, muss eine Engine verwendet werden, die mit Java kompatibel
+ist. Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden
+wäre über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu
+Java kompatibel oder gar in Java geschrieben sind. Die Auswahl ist nicht sehr groß, so lässt sich etwa in der Auflistung
+der Wikipedia\footnote{\url{http://de.wikipedia.org/wiki/Liste_von_Spiel-Engines}} schnell die Java MonkeyEngine als
 bestes Gesamtpaket identifizieren. Sie bietet alle nötigen Features\footnote{Liste aller Features der jMonkeyEngine3:
 http://jmonkeyengine.org/engine/}, ist schon in der dritten Version verfügbar, somit ist von einem Gewissen Reifegrad
 auszugehen, sie ist frei verwendbar unter der BSD-Lizenz und sie rendert mithilfe der Java-OpenGL-Anbindung
 JOGL\footnote{siehe: https://jogamp.org/jogl/www/}, was eine gewisse Grafikperformance erwarten lässt.
 
-
-\subsection{Architektur}
-
-Das Spiel besteht Serverkomponente, die für die Berechnung der virtuellen Welt und der Spielabläufe verantwortlich ist,
-sowie einer Clientkomponente, welche die virtuelle Welt audiovisuell darstellt und Benutzereingaben verarbeitet.
-
-\subsection{Hardware-Software Mapping}
-
-Das Spiel kann entweder im Internet oder im lokalen Netzwerk gespielt werden. Im ersten Fall läuft die Serversoftware
-auf einem gehosteten Server im Internet, der per IP-Adresse oder Domain erreichbar ist. Im zweiten Fall läuft die
-Server-Software auf einem der PCs der Spieler oder einem extra dafür eingerichteten zusätzlichem Rechner/Server. Die
-Clientsoftware wird in beiden Fällen auf dem Computer jedes Spielers gestartet. Technisch ist es möglich, beliebig viele
-Instanzen der Clientsoftware auf einer Maschine laufen zu lassen, jedoch stets nur eine Instanz der Server-Software, da
-diese festgelegte Ports reserviert.
