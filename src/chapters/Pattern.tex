@@ -20,14 +20,15 @@ implementieren. Abbildung \ref{equipment_factory} zeigt die Struktur als UML-Kla
 \end{figure}
 
 \subsection{Szenen-Graph-Erstellung mithilfe des Kompositionsmusters}
-Wie bereits erwähnt, besteht die Spielwelt aus vielen einzelnen Objekten. Die jMonkeyEngine3 organisiert die Objekte für
-das Rendering in einer hierarchischen Baumstruktur, dem "`scene graph"'. Dieser ist ein gerichteter azyklischer Graph,
-wie ihn die meisten Graphik-Engines nutzen\cite{???}. Das Kompositionsmuster ist eine Lösung, um eine Hierarchie
-beliebiger Breite und Tiefe zu repräsentieren, sodass sowohl einzelne Objekte als auch Kompositionen von Objekten durch
-eine gemeinsame Schnittstelle einheitlich behandelt werden können. Abbildung \ref{composition_spatial} zeigt die
-Umsetzung des Kompositionsmusters in der jMonkeyEngine3. Die Komponente-Klasse ist hier Spatial und Geometry ist die
-Blatt-Klasse. Sie stellt ein tatsächliches Objekt in der virtuellen Welt dar, definiert durch Formen und Materialien.
-Die Kompositum-Klasse ist Node, welche wiederum andere Spatials als Kindelemente enthalten kann.\\
+Wie bereits erwähnt, besteht die Spielwelt aus vielen einzelnen Objekten. Wie die meisten
+Grafik-Engines\cite{Sowizral_2000}, organisiert die jMonkeyEngine3 die Objekte für das Rendering in einer hierarchischen
+Baumstruktur, einem gerichteten azyklischen Graph, der als Szenen-Graph (bzw. scene graph) bezeichnet wird. Das
+Kompositionsmuster ist eine Lösung, um eine solche Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass
+sowohl einzelne Objekte als auch Kompositionen von Objekten durch eine gemeinsame Schnittstelle einheitlich behandelt
+werden können. Abbildung \ref{composition_spatial} zeigt die Nutzung des Kompositionsmusters zur Implementierung des
+Szenen-Graphen in der jMonkeyEngine3. Die Komponente heißt hier Spatial. Geometry, die Blatt-Klasse, stellt ein
+tatsächliches Objekt in der virtuellen Welt dar, definiert durch Formen und Materialien. Das Kompositum ist Node,
+welches wiederum andere Spatials als Kindelemente enthalten kann.\\
 
 \begin{figure}[htbp]
 \centering
@@ -40,7 +41,7 @@ Ein Beispiel für die Zusammensetzung der virtuellen Welt aus Spatials, kann anha
 werden. Abblidung \ref{composition_avatar} veranschaulicht die Struktur der Spielfigur. Der Wurzelknoten hat drei
 Kindelemente: Kopf, Oberkörper, Unterkörper. Der Kopf ist vom Typ Geometry, während Ober- und Unterkörper Nodes sind,
 die wiederum Kindelemente besitzen, nämlich Arme, Beine und Torso. Die Unterteilung könnte natürlich auch noch weiter
-gehen: ein Arm könnte zum Beispiel wiederum ein Knoten sein, der aus Oberarm, Unterarm und Hand, besitzt, wobei die Hand
+gehen: ein Arm könnte zum Beispiel wiederum ein Knoten sein, der aus Oberarm, Unterarm und Hand, besteht, wobei die Hand
 ebenfalls aus einzelnen Fingern bestehen könnte, usw. Beliebig feingliedrige Strukturen sind möglich, je nach
 gewünschtem Detailgrad der Modelle.
 
