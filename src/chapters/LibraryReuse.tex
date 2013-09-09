@@ -1,0 +1,78 @@
+\section{Verwendung einer Game-Engine}
+
+\subsection{Was ist eine Game-Engine?}
+Ein Computerspiel besteht meist aus einer Spielewelt, die optisch und aktustisch erlebt werden kann. Außerdem kann mit
+dieser Welt - je nach Spiel auf unterschiedliche Weise - interagiert werden. In vielen Spielen steuert der Spieler
+seinen Hauptcharakter, den sog. Avatar, durch diese Welt. Dazu werden Softwarebibliotheken benötigt, die
+dreidimensionalen Raumklang erzeugen, Objekte grafisch darstellen, physikalische Abläufe berechnen, Benutzereingaben in
+Steuerbefehle umwandeln, sowie Ereignisse über das Netzwerk kommunizieren. Eine Spiele-Engine bietet dem Entwickler
+diese und andere Funktionalitäten über ein einheitliches Interface an. Zum einen wird dadurch der Programmcode besser
+strukturiert, zum anderen der Entwickler entlastet.
+Es bietet sich dabei natürlich an, eine Engine für mehrere (ähnliche) Spiele zu verwenden. Einige Hersteller stellen
+ihre Engine anderen Entwicklern (teils gegen Lizenzgebühren) zur Verfügung. Bekannte Engines großer Spielehersteller
+sind die Frostbite-Engine (Dice), Cry-Engine (Crytec), Unreal-Engine (Epic), die neben dem Hauptspiel, für das sie
+entwickelt wurden, auch in weiteren Spielen verwendet wurden.
+
+Es ist natürlich möglich, ein Spiel ohne bereits existierende Game-Engine zu schreiben. Das führt allerdings in den
+meisten Fällen dazu, dass man eine eigene Engine innerhalb des Spiels entwickelt. Da heutzutage reichlich gute Engines
+verfügbar sind, einige davon sogar ohne Lizenzgebühren frei verwendbar, macht dieser Mehraufwand wenig Sinn. Vor allem
+ist zur Entwicklung einer guten Engine viel Erfahrung nötig, die die wenigsten Entwickler haben dürften.
+
+\subsection{Game-Engine für Java}
+Die meisten Game-Engines sind in C/C++ geschrieben. Da Cydonia ausschließlich in Java entwickelt werden soll, muss aber
+eine Engine verwendet werden, die mit Java kompatibel ist. Zum Glück gibt es sogar einige Engines die komplett in Java
+geschrieben sind. Die Auswahl ist nicht sehr groß, so lässt sich etwa in der Auflistung der
+Wikipedia\footnote{\url{http://de.wikipedia.org/wiki/Liste_von_Spiel-Engines}} schnell die Java MonkeyEngine als bestes
+Gesamtpaket identifizieren. Sie bietet alle nötigen Features\footnote{Liste aller Features der jMonkeyEngine3:
+http://jmonkeyengine.org/engine/}, ist schon in der dritten Version verfügbar, somit ist von einem Gewissen Reifegrad
+auszugehen, sie ist frei verwendbar unter der BSD-Lizenz und sie rendert mithilfe der Java-OpenGL-Anbindung
+JOGL\footnote{siehe: https://jogamp.org/jogl/www/}, was eine gewisse Grafikperformance erwarten lässt.
+
+\subsection{Verwendung der MonkeyEngine3}
+Einige der zur Entwicklung von Cydonia verwendeten Features der jME3 werden in diesem Abschnitt vorgestellt:
+\begin{itemize}
+  \item Rendering
+  \item Szenen-Graph
+  \item Physik-Engine jBullet
+  \item Netzwerk-Bibliothek SpiderMonkey
+  \item GUI-Bibliothek NiftyGUI
+\end{itemize}
+
+\subsubsection{Rendering}
+Der wichtigste Teil einer Game-Engine ist sicher die Grafik-Engine, also eine Software-Komponente, die Bilder von
+dreidimensionalen Modellen erzeugt. Dabei spielen Materialien, Licht und Schatten eine große Rolle. Die jME3 ermöglicht
+dem Entwickler das Aussehen einer Szene (unter anderem durch eigene Shader) detailliert anzupassen. 
+
+\subsubsection{Szenen-Graph}
+Wie bereits erwähnt, besteht die Spielwelt aus vielen einzelnen Objekten. Wie die meisten
+Grafik-Engines\cite{Sowizral_2000}, organisiert die jMonkeyEngine3 die Objekte für das Rendering in einer hierarchischen
+Baumstruktur, einem gerichteten azyklischen Graph. Dieser Graph wird als Szenen-Graph (bzw. scene graph) bezeichnet. Er
+ermöglicht dem Entwickler die Zusammensetzung komplexer virtueller Objekte bzw. Welten aus vielen einzelnen Objekten.
+Außerdem lässt sich der Szenen-Graph hierarchisch manipulieren, d.h. Bewegungen oder Rotationen eines Knoten wirken sich
+auch auf alle Nachfolger bzw. Kind-Elemente des Knoten aus. Weitere Informationen zur Struktur des Szenen-Graphen
+enthält Abschnitt \ref{subsection:SceneGraph_CompositePattern}.
+
+\subsubsection{Physik-Engine jBullet}
+Mithilfe der Physik-Engine können innerhalb der virtuellen Welt Objekte mit physikalischem Verhalten simuliert werden.
+Einfachstes Beispiel ist die Schwerkraft, die dafür sorgt, das Dinge nach unten fallen, wenn sie nicht auf einem festen
+Gegenstand (z.B. Boden) stehen. Damit die Dinge nicht durch den Boden fallen, ist eine Erkennung und Behandlung von
+Kollisionen nötig. Auch das erledigt die Physik-Engine. Die Integration der physikalischen Simulation in die virtuelle
+Welt geschieht durch Hinzufügen von speziellen Kontroll-Objekten zu den Elementen des Szenen-Graphen. Das
+Kontroll-Objekt manipuliert dann das Szenen-Graph-Element entsprechend in jedem Schritt der physikalischen Simulation.
+
+\subsubsection{Netzwerk-Bibliothek SpiderMonkey}
+\label{subsubsection:SpiderMonkey}
+Die jMonkeyEngine 3 enthält für die Entwicklung von Netzwerkspielen das SpiderMonkey Paket, das die Übertragung von
+Nachrichten per TCP oder UDP ermöglicht. Die Übertragung ist threadsafe und unterstützt optional eine Komprimierung der
+Daten. Jeder benötigte Nachrichtentyp wird als Klasse implementiert, die von einer abstrakten Message-Klasse erbt. Die
+Felder der Klasse dienen zur Übertragung von zusätzlichen Werten. Aus Benutzereingaben resultierende Steuerbefehle
+werden zum Beispiel per InputMessage an der Server geschickt. Die Klasse InputMessage hat drei Felder: playerid enthält
+die ID des Spielers, command beschreibt die gewünschte Funktion (z.B. "`move forward"') und value gibt an, ob die
+zugehörige Taste gedrückt oder losgelassen wurde. Weitere Details zur Netzwerk-Programmierung bietet Abschnitt
+\ref{subsubsection:Netcode}.
+
+\subsubsection{GUI-Bibliothek NiftyGUI}
+NiftyGUI ist eine Bibliothek zur Erstellung von grafischen Benutzerschnittstellen. Cydonia nutzt die Funktionen von
+NiftyGUI für alle Menüs, die während der Laufzeit des Spiels angezeigt werden. Dazu gehören das Einstiegsmenü, in dem
+der Spieler sein Team wählen kann, ebenso wie das Pausemenü über das der Spieler das Spiel verlassen kann. NiftyGUI wird
+aber auch zur Darstellung des Head-up-Display genutzt.

@@ -19,16 +19,17 @@ Tastenbelegungen und die Erzeugung von Steuerbefehle implementiert.\\
 Im Paket GameController befinden sich schließlich alle Klassen, die zur Verwaltung und Steuerung von Programmzuständen,
 Menüs und ?. Außerdem wird hier auch die Logik, also der eigentliche Ablauf, des Spiels umgesetzt.\\
 
-Eine Übersicht über die Paketstruktur von Cydonia gibt auch Abbildung \ref{global_control_flow}.
+Eine Übersicht über die Paketstruktur von Cydonia gibt auch Abbildung \ref{figure:global_control_flow}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{images/global_control_flow}
 \caption[Diagramm: Globaler Kontrollfluss]{Diagramm: Globaler Kontrollfluss}
-\label{global_control_flow}
+\label{figure:global_control_flow}
 \end{figure}
 
 \section{Globaler Kontrollfluss}
+\label{section:GlobalControlFlow}
 Der für Computerspiele typische Kontrollfluss geht vom Spieler aus, der mit seinen Eingaben Ereignisse auslöst.
 Beispielsweise könnte der Spieler eine Taste drücken, mit dem Ziel einen Cube (mithilfe des Pick'n'Place-Equipments) in
 der Spielwelt zu platzieren. Dieser Tastendruck wird vom Paket Input detektiert und in einen Steuerbefehl umgesetzt.
@@ -39,7 +40,11 @@ Aktion für das Pick'n'Place-Equipment implementiert (Rückmeldungen für den Spiel
 Das Equipment-Paket meldet folglich dem GameController-Paket die gewünschte Manipulation der Spielwelt, nämlich das
 platzieren des im Equipment vorrätigen Cubes an einer bestimmten Position. Letzendlich wird die Platzierung des Cubes im
 Paket GameWorld ausgeführt und der Spieler kann den neuen Cube sehen. Dieser beispielhafte Ablauf kann auch anhand der
-Nummerierung in Abbildung \ref{global_control_flow} nachvollzogen werden.
+Nummerierung in Abbildung \ref{figure:global_control_flow} nachvollzogen werden.\\
+
+Das Spiel hat jedoch auch Komponenten, die nicht Ereignis-gesteuert arbeiten. Das Rendern der virtuellen Welt sowie
+deren physikalische Simulation laufen prozedural ab. In einer endlosen Schleife wird mehrmals pro Sekunde ein kleiner
+Schritt des physikalischen Modells berechnet und ein neues Bild erzeugt.
 
 \subsection{Hardware-Software Mapping}
 Cydonia ist als Multiplayer-Spiel so konzipiert, dass mehrere Spieler zusammen in einer virtuellen Umgebung spielen.
@@ -49,45 +54,12 @@ Dazu ist ein sog. Server nötig, eine Instanz des Spiels, die die Authorität über
 besitzt, da sonst durch geringfügige Abweichungen in der Berechnung enorme Unterschiede zwischen den Simulationen auf
 den einzelnen Computern entstehen können. Dieser Server kann bei ausreichender Rechenleistung auch auf einem der PCs der
 Spieler laufen, der Einfachkeit halber soll im folgenden jedoch nur der Fall eines dedizierten Servers betrachtet
-werden. Abbildung \ref{hardware_mapping} veranschaulicht die Verteilung der Software-Komponenten auf die
+werden. Abbildung \ref{figure:hardware_mapping} veranschaulicht die Verteilung der Software-Komponenten auf die
 Hardware-Knoten.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{images/hardware_mapping}
 \caption[UML-Verteilungsdiagramm: Beziehung zwischen Software-Komponenten und Hardware-Knoten]{UML-Verteilungsdiagramm: Beziehung zwischen Software-Komponenten und Hardware-Knoten}
-\label{hardware_mapping}
+\label{figure:hardware_mapping}
 \end{figure}
-
-
-\section{Wahl der Engine}
-
-\subsection{Was ist eine Game-Engine?}
-Ein Computerspiel besteht meist aus einer Spielewelt, die optisch und aktustisch erlebt werden kann. Außerdem kann mit
-dieser Welt - je nach Spiel auf unterschiedliche Weise - interagiert werden. In vielen Spielen steuert der Spieler
-seinen Hauptcharakter, den sog. Avatar, durch diese Welt. Dazu werden Softwarebibliotheken benötigt, die
-dreidimensionalen Raumklang erzeugen, Objekte grafisch darstellen, physikalische Abläufe berechnen, Benutzereingaben in
-Steuerbefehle umwandeln, sowie Ereignisse über das Netzwerk kommunizieren. Eine Spiele-Engine bietet dem Entwickler
-diese und andere Funktionalitäten über ein einheitliches Interface an. Zum einen wird dadurch der Programmcode besser
-strukturiert, zum anderen der Entwickler entlastet.
-Es bietet sich dabei natürlich an, eine Engine für mehrere (ähnliche) Spiele zu verwenden. Einige Hersteller stellen
-ihre Engine anderen Entwicklern (teils gegen Lizenzgebühren) zur Verfügung. Bekannte Engines großer Spielehersteller
-sind die Frostbite-Engine (Dice), Cry-Engine (Crytec), Unreal-Engine (Epic), die neben dem Hauptspiel, für das sie
-entwickelt wurden, auch in weiteren Spielen verwendet wurden.
-
-Es ist natürlich möglich, ein Spiel ohne bereits existierende Game-Engine zu schreiben. Das führt allerdings in den
-meisten Fällen dazu, dass man eine eigene Engine innerhalb des Spiels entwickelt. Da heutzutage reichlich gute Engines
-verfügbar sind, einige davon sogar ohne Lizenzgebühren frei verwendbar, macht dieser Mehraufwand wenig Sinn. Vor allem
-ist zur Entwicklung einer guten Engine viel Erfahrung nötig, die die wenigsten Entwickler haben dürften.
-
-\subsection{Game-Engine für Java}
-Da Cydonia ausschließlich in Java entwickelt werden soll, muss eine Engine verwendet werden, die mit Java kompatibel
-ist. Die meisten Game-Engines sind in C/C++ geschrieben. Eine solche Engine als Teil einer Java Software zu verwenden
-wäre über das JNI evtl. möglich, ist aber sicher keine einfache Lösung. Zum Glück gibt es auch einige Engines die zu
-Java kompatibel oder gar in Java geschrieben sind. Die Auswahl ist nicht sehr groß, so lässt sich etwa in der Auflistung
-der Wikipedia\footnote{\url{http://de.wikipedia.org/wiki/Liste_von_Spiel-Engines}} schnell die Java MonkeyEngine als
-bestes Gesamtpaket identifizieren. Sie bietet alle nötigen Features\footnote{Liste aller Features der jMonkeyEngine3:
-http://jmonkeyengine.org/engine/}, ist schon in der dritten Version verfügbar, somit ist von einem Gewissen Reifegrad
-auszugehen, sie ist frei verwendbar unter der BSD-Lizenz und sie rendert mithilfe der Java-OpenGL-Anbindung
-JOGL\footnote{siehe: https://jogamp.org/jogl/www/}, was eine gewisse Grafikperformance erwarten lässt.
-

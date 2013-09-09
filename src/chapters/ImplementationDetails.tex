@@ -1,12 +1,31 @@
 \section{Details der Implementierung}
 
 
-\subsection{Netzwerk}
+\subsection{Dynamisches Modell}
+
+Das dynamische Modell beschreibt die Interaktionen zwischen den Entitäten des statischen Modells.
+
+\subsubsection{Neuer Spieler tritt bei}
+Wenn eine neuer Spieler dem Spiel beitritt, muss er sich zunächst beim Server melden. Dieser erstellt ein neues
+Spieler-Objekt und informiert die bereits vorhandenen Client-Instanzen über den Beitritt und die Daten des neuen
+Spielers.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{images/sequence_player_joins}
+\caption[Sequenzdiagramm "`Beitritt eines Spielers"']{Sequenzdiagramm "`Beitritt eines Spielers"'}
+\label{sequence_player_joins}
+\end{figure}
+
+
+
+\subsection{Netzcode}
+\label{subsubsection:Netcode}
 
 Um den Spielablauf interaktiv zwischen den Mitspielern zu gestalten, ist es nötig die simulierte virtuelle Welt zwischen
 dem Server und den einzelnen Client-Instanzen zu synchronisieren. Dies übernimmt der sog. Netzcode.
 
-Die wichtigsten Aufgaben des Netzwerkcodes sind:
+Die wichtigsten Aufgaben des Netzcodes sind:
 \begin{itemize} 
 \item Übertragen von Benutzereingaben in Form von Steuerbefehlen zum Server.
 \item Benachrichtigung der Clients über Ereignisse, die die simulierte Welt beeinflussen.
@@ -15,23 +34,17 @@ Die wichtigsten Aufgaben des Netzwerkcodes sind:
 
 Der Netzcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleineres Spiel
 ausschließlich als Testplatform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
-im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios \cite{Inerle_2011}.
+im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios \cite{Inerle_2011}.\\
 
-Die jMonkeyEngine 3 enthält für die Entwicklung von Netzwerkspielen das SpiderMonkey Paket, das die Übertragung von
-Nachrichten per TCP oder UDP ermöglicht. Die Übertragung ist threadsafe und unterstützt optional eine Komprimierung der
-Daten. Jeder benötigte Nachrichtentyp wird als Klasse implementiert, die von einer abstrakten Message-Klasse erbt. Die
-Felder der Klasse dienen zur Übertragung von zusätzlichen Werten. Aus Benutzereingaben resultierende Steuerbefehle
-werden zum Beispiel per InputMessage an der Server geschickt. Die Klasse InputMessage hat drei Felder: playerid enthält
-die ID des Spielers, command beschreibt die gewünschte Funktion (z.B. "`move forward"') und value gibt an, ob die
-zugehörige Taste gedrückt oder losgelassen wurde.\\
+Cydonia verwendet die SpiderMonkey-Bibliothek, mit deren Hilfe Nachrichten über das Netzwerk ausgetauscht werden können
+(vgl. dazu \ref{subsubsection:SpiderMonkey}).
+Drückt zum Beispiel ein Spieler die Taste "`w"', ermittelt das Input-Mapping den Steuerbefehl "`move forward"'. Daraus
+wird eine InputMessage erstellt, die die ID des Spielers, den Befehl "`move forward"' sowie einen Parameter, der das
+Drücken (im Gegensatz zum Loslassen) der Taste kennzeichnet.
+Diese Nachricht wird an den Server geschickt. Der Server verarbeitet die erhaltene Nachricht im nächsten Zyklus und
+simuliert in den folgenden Zyklen die Vorwärtsbewegung des Spielers.\\
 
-Drückt zum Beispiel ein Spieler die Taste "`w"', ermittelt das Input-Mapping den Steuerbefehl "`move forward"'. Daraus wird
-eine InputMessage erstellt, die die ID des Spielers, den Befehl "`move forward"' sowie einen Parameter, der das Drücken
-(im Gegensatz zum Loslassen) der Taste kennzeichnet. Diese Nachricht wird an den Server geschickt. Der Server
-verarbeitet die erhaltene Nachricht im nächsten Zyklus und simuliert in den folgenden Zyklen die
-Vorwärtsbewegung des Spielers.\\
-
-In regelmäßigen Abständen (standartmäßig alle 50 ms) generiert der Server einen sog. Snapshot der virtuellen Welt. Dieser
+In regelmäßigen Abständen (standardmäßig alle 50 ms) generiert der Server einen sog. Snapshot der virtuellen Welt. Dieser
 enthält die Positionen und Bewegungsrichtungen aller dynamischen Objekte. Eine Nachricht, die den Snapshot enthält wird
 an die Clients geschickt, die ihre Simulation entsprechend anpassen, um die neuen Informationen zu berücksichtigen.\\
 
@@ -52,5 +65,4 @@ höher sind, sind weitere Vorkehrungen nötig, um einen fehlerfreien Spielfluss zu
 Die Entwickler-Community der Source-Engine des Entwicklers und Publishers Valve hat eine sehr ausführliche und
 verständliche Dokumentation der funktionsweise ihres Netzcodes veröffentlicht. Darin finden sich Beschreibungen der
 Techniken Entity-Interpolation, Input-Prediction und Lag-Compensation. Zusammengenommen erreichen diese Techniken einen
-deutlich höheren Wirkungsgrad. Die Implementierung bedeutet jedoch hohen Aufwand, weswegen bei der vorliegenden Arbeit
-auf eine Umsetzung verzichtet wurde.\\
+deutlich höheren Wirkungsgrad. Deren Beschreibung sowie deren Implementierung übersteigen jedoch den Rahmen dieser Arbeit.\\
