@@ -1,18 +1,29 @@
 \chapter{Detaillierte Beschreibung der Anwendungsfälle}
 \label{chapter:UseCaseDescriptions}
 
-\section{Anwendungsfall 1: Server Starten}
-Der Administrator startet den Server auf einem (lokalen) Computer.
+\section{Cube bewegen}
+\begin{tabular}{ |p{3cm} | p{1cm}|p{8cm}|}
+    \hline
+	\textbf{Anwendungs-fallname} & \multicolumn{2}{p{9.5cm}|}{Cube bewegen}\\ \hline
+	\textbf{Akteure} & \multicolumn{2}{p{9.5cm}|}{Initialisiert von Spieler} \\ \hline
+	\multirow{4}{*}{\textbf{Ereignisfluss}} & \multicolumn{2}{p{9.5cm}|}{1) Der Spieler möchte einen Cube bewegen. Dazu visiert er den Cube an. }\\ \hline
+	 & \multicolumn{2}{p{9.5cm}|}{2) Der Spieler benutzt das Equipment um den Cube aufzunehmen. } \\ \hline
+	 & & 3) Der wird aus der Spielwelt entfernt und erscheint im Inventar des Equipments. \\ \hline
+	 & \multicolumn{2}{p{9.5cm}|}{4) Der Spieler kann sich nun beliebig bewegen (siehe Anwendungsfall "`Bewegen"').} \\ \hline
+	 & \multicolumn{2}{p{9.5cm}|}{5) Der Spieler visiert die Stelle an, an der er den Cube platzieren möchte. } \\ \hline
+	 & \multicolumn{2}{p{9.5cm}|}{6) Der Spieler benutzt das Equipment um den Cube zu platzieren. } \\ \hline
+	 & & 7) Der Cube verschwindet aus dem Inventar des Equipments und wird in die Spielwelt eingefügt. \\ \hline
+	\textbf{Anfangs-bedingungen} & \multicolumn{2}{p{9.5cm}|}{Ein beweglicher Cube muss in Sichtweite des Spielers in der Spielwelt vorhanden sein.\\ Der Spieler muss das Pick'n'Place-Equipment ausgewählt haben.} \\ \hline
+	\textbf{Abschluss-bedingungen} & \multicolumn{2}{p{9.5cm}|}{Der Cube muss in der Welt vorhanden sein.\\ Der Spieler muss nach wie vor das Pick'n'Place-Equipment aktiv haben.\\ Das Equipment muss zur erneuten Aufnahme eines Cubes bereit sein.} \\ \hline
+	\textbf{Qualitäts-anforderungen} & \multicolumn{2}{p{9.5cm}|}{keine Ahnung} \\ \hline
+\end{tabular}
 
-\section{Anwendungsfall 2: Map laden}
-Der Administrator wählt er eine virtuelle Spielwelt aus und lässt den Server diese laden.
+\section{Bewegen}
 
-\section{Anwendungsfall 2: Server beenden}
-Der Administrator beendet den laufenden Server.
+\section{Einen Punkt erzielen}
 
-\section{Anwendungsfall 3: Spiel beitreten}
-Der Spieler möchte einem Spiel beitreten. Dazu startet er das Spiel. Er wählt einen Server aus. Falls der gewünschte
-Server nicht verfügbar ist, kann er ihn manuel hinzufügen. Der Spieler wählt ein Team aus und beginnt zu spielen.
+\section{Flagge nehmen}
 
-\section{Anwendungsfall 4: Spiel verlassen}
-Der Spieler verlässt das Spiel.
+\section{Objekte swappen}
+
+\section{Flagge zurückholen}
