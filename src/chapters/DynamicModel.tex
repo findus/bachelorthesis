@@ -13,3 +13,18 @@ Spielers.
 \caption[Sequenzdiagramm "`Beitritt eines Spielers"']{Sequenzdiagramm "`Beitritt eines Spielers"'}
 \label{sequence_player_joins}
 \end{figure}
+
+
+\subsection{Statusübergänge im System}
+Der Client, also die Spiel-Instanz des Spielers, durchläuft verschiedene Zustände. Um alle nötigen Zustände abzubilden
+wurden zwei Statusvariablen implementiert: ClientState und GameState. Clientstate stellt den Zustand der Anwendung dar.
+Mögliche Werte sind loading, lobby, menu und game. GameState bildet die möglichen Zustände des Spiels ab: down, running,
+spectate, roundover. Abbildung \ref{figure:state_machine} zeigt den Zusammenhang der Zustände als
+Zustands-Übergangs-Diagramm.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{images/state_machine}
+\caption[Zustands-Übergangs-Diagramm]{Zustands-Übergangs-Diagramm}
+\label{state_machine}
+\end{figure}
