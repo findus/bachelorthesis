@@ -60,6 +60,7 @@ ENTRY
     type
     volume
     year
+    url          %%%  Internet-Adresse URL ( Uniform Resource Locator )
   }
   {}
   { label extra.label sort.label }
@@ -203,6 +204,27 @@ FUNCTION {emphasize}
 
 INTEGERS { nameptr namesleft numnames }
 
+FUNCTION {format.url}
+{  url empty$
+     { "" }
+     { type empty$ NOT
+         { type #-1 #4 substring$ "mail" =
+           type #1 #4 substring$ "Mail" =
+           OR
+              { type$ "incollection" =
+                  { "" }
+                  { "\,Absenderadresse: \url{" url * "}" * }
+                if$
+              }
+              { "\url{" url * "}" * }%%   evtl. "URL" oder "<...>"
+            if$
+          }
+          { "\url{" url * "}" * }   %%   evtl. "URL" oder "<...>"
+        if$
+     }
+   if$
+}
+
 FUNCTION {format.names}
 { 's :=
   #1 'nameptr :=
@@ -219,7 +241,7 @@ FUNCTION {format.names}
 	      if$
 	      t "others" =
 		{ " et~al." * }
-		{ " and " * t * }
+		{ " und " * t * }
 	      if$
 	    }
 	  if$
@@ -346,8 +368,8 @@ FUNCTION {format.edition}
 { edition empty$
     { "" }
     { output.state mid.sentence =
-	{ edition "l" change.case$ " edition" * }
-	{ edition "t" change.case$ " edition" * }
+	{ edition "l" change.case$ " Auflage" * }
+	{ edition "t" change.case$ " Auflage" * }
       if$
     }
   if$
@@ -379,8 +401,8 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-	{ "pages" pages n.dashify tie.or.space.connect }
-	{ "page" pages tie.or.space.connect }
+	{ "Seiten" pages n.dashify tie.or.space.connect }
+	{ "Seite" pages tie.or.space.connect }
       if$
     }
   if$
@@ -411,7 +433,7 @@ FUNCTION {format.chapter.pages}
 { chapter empty$
     'format.pages
     { type empty$
-	{ "chapter" }
+	{ "Kapitel" }
 	{ type "l" change.case$ }
       if$
       chapter tie.or.space.connect
@@ -679,6 +701,7 @@ FUNCTION {misc}
   format.title output
   new.block
   howpublished output
+  url output
   new.block
   note output
   fin.entry
@@ -845,7 +868,7 @@ FUNCTION {format.lab.names}
 	'skip$
 	{ s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
 	    { " et~al." * }
-	    { " and " * s #2 "{vv~}{ll}" format.name$ * }
+	    { " und " * s #2 "{vv~}{ll}" format.name$ * }
 	  if$
 	}
       if$
