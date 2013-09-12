@@ -3,15 +3,12 @@
 
 \subsection{Funktionale Anforderungen}
 
-\subsubsection{FR 1: Darstellung der virtuelle Welt}
-Das Spiel muss die virtuelle Spielwelt, bestehend aus farbigen Würfeln, Flaggenpunkten und Spielern grafisch
+\subsubsection{FA 1: Darstellung der virtuellen Welt}
+Das Spiel muss die virtuelle Spielwelt, bestehend aus farbigen Würfeln, Flaggen und Spielern grafisch
 dreidimensional darstellen. Der Anwender soll dabei die virtuelle Welt aus der Perspektive seines Avatars sehen.
 
-\subsubsection{FR 2: Auswahl der Spielwelt}
-Das Spiel muss dem Anwender die Möglichkeit bieten, unter verschiedenen Spielwelten, sog. Karten, zu wählen.
-
-\subsubsection{FR 3: Steuerung}
-Das Spiel muss Eingaben des Anwenders via Maus und Tastatur zur Steuerung des Avatars umsetzen. Dazu gehört:
+\subsubsection{FA 2: Steuerung}
+Das Spiel muss fähig sein, Eingaben des Anwenders via Maus und Tastatur zur Steuerung des Avatars umzusetzen. Dazu gehört:
 \begin{itemize}
   \item Bewegen in vier Richtungen
   \item Springen
@@ -20,19 +17,18 @@ Das Spiel muss Eingaben des Anwenders via Maus und Tastatur zur Steuerung des Av
   \item Benutzen des Equipments
 \end{itemize}
 
-\subsubsection{FR 4: Ablauf}
-Das Spiel muss rundenweise ablaufen. Die Ausgangssituation der Spielwelt sowie der Avatare muss jede Runde gleich sein.
-Jede Runde endet nach einer bestimmten Zeit oder, wenn ein Team eine bestimmte Anzahl Punkte erreicht.
-Ausschlaggebend ist das Ereignis, das früher eintritt.
+\subsubsection{FA 4: }
+Das Spiel muss dem Spieler die Möglichkeit bieten die Flagge aufzunehmen.
+Das Spiel muss dem Spieler die Möglichkeit bieten die Flagge
 
 
 \subsection{Nicht-funktionale Anforderungen}
 \subsubsection{Usability}
-Im Bereich der Spiele-Entwicklung könnendie nach ISO-Standard üblichen Maßstäbe für Usability, Effektivität (die
-Genauigkeit und Vollständigkeit mit der Benutzer ihre gesetzten Ziele erreichen), Effizienz (die Ressourcen, die zur
-Erfüllung der Vorgaben eingesetzt werden) und die Zufriedenheit des Benutzers, nicht auf die gesamte Software (in diesem
-Fall das Spiel) angewendet werden. Da ein Spiel möglichst lange unterhalten soll, ist Effizienz, im Sinne möglichst
-schneller Erledigung, hinfällig. Außerdem haben Spiele oft keinen definierten Endpunkt, an dem das Spiel als
+Im Bereich der Spiele-Entwicklung können die nach ISO-Standard üblichen Maßstäbe für Usability - Effektivität (die
+Genauigkeit und Vollständigkeit, mit der Benutzer ihre gesetzten Ziele erreichen), Effizienz (die Ressourcen, die zur
+Erfüllung der Vorgaben eingesetzt werden) und Zufriedenheit des Benutzers - nicht auf die gesamte Software (in diesem
+Fall das Spiel) angewendet werden. Da ein Spiel möglichst lange unterhalten soll, ist Effizienz im Sinne möglichst
+schneller Erledigung hinfällig. Außerdem haben Spiele oft keinen definierten Endpunkt, an dem das Spiel als
 abgeschlossen gilt. Wenn sie einen solchen Endpunkt besitzen, gibt es oft viele Wege, diesen zu
 erreichen\cite{Federoff_2002}. Man kann allerdings die übliche Heuristik durchaus auch auf Spiele anwenden, wenn man
 lediglich das Interface unabhängig vom Spielablauf betrachtet.\\
@@ -41,14 +37,14 @@ Vor allem in schnellen Spielen, zu denen Shooter tendenziell immer gehören, ist 
 Spielfluss benötigten Funktionen per einfachen Tastendruck zu erreichen. Nicht umsonst ist bei der für Shooter üblichen
 Steuerung Zielen und Abfeuern der Waffe in einer Hand, der "`Maushand"', vereint. Gleichzeitig übernimmt die andere Hand
 alle für die Bewegung des Avatars nötigen Eingaben: vorwärts, rückwärts, seitwärts, springen, ducken usw.. Seltener
-gebrauchte Funktionen werden meist ebenso mit schlechter erreichbaren Tasten verbunden, wie Funktionen, bei denen die
+gebrauchte Funktionen werden meist ebenso mit schlechter erreichbaren Tasten verbunden wie Funktionen, bei denen die
 Reaktionsgeschwindigkeit nicht allzu spielentscheidend ist.\\
 
-Zur Usability gehört aber nicht nur die schnelle und einfach Eingabe von Befehlen, sondern auch die Übersichtlichkeit
-der grafischen Anzeige. Da Spieler in dreidimensionalen Spielen stark auf die Darstellung der virtuellen Welt fokusiert
-sind, müssen zusätzliche Informationen (wie übrige Zeit, Punktestand, Position der Teammitglieder, \ldots) jederzeit
+Zur Usability gehört aber nicht nur die schnelle und einfache Eingabe von Befehlen, sondern auch die Übersichtlichkeit
+der grafischen Anzeige. Da Spieler in dreidimensionalen Spielen stark auf die Darstellung der virtuellen Welt fokussiert
+sind, müssen zusätzliche Informationen (wie übrige Zeit, Punktestand, Position der Teammitglieder, etc.) jederzeit
 übersichtlich und mit starkem Kontrast zum Hintergrund dargestellt werden, sodass der Spieler mit einem kurzen Blick
-alle nötigen Imformationen erhalten kann.\\
+alle nötigen Informationen erhalten kann.\\
 
 Und schließlich ist auch in Spielen die einfache Bedienbarkeit aller Menüs von Bedeutung. Dazu müssen die einzelnen
 Optionen sinnvoll gruppiert und mit möglichst wenigen Klicks erreichbar sein.
@@ -62,18 +58,20 @@ Cheating"' können hier möglich sein.
 
 \subsubsection{Performance}
 Performance bezieht sich in diesem Fall auf das Simulieren (u.a. Physikberechnung) und Rendern der virtuellen Welt, da
-diese typischer Weise die Flaschenhälse in der Spiele-Software sind. Ein konstanter, nicht zu langsamer Bildaufbau ist
-für die Immersion des Spieler sehr wichtig. Vor allem bei Shootern ist die Bildwiderholrate aber auch ein entscheidender
-Faktor für die Leistungsfähigkeit des Spielers\cite{Claypool_2007}. Daher sollte die Bildwiderholrate möglichst konstant
-bei 60 fps (Frames per second) liegen, darf jedoch nie unter 30 fps fallen.
+dies typischerweise den "`Flaschenhals"' in der Spiele-Software darstellt. Ein konstanter, nicht zu langsamer Bildaufbau ist
+für die Immersion des Spielers sehr wichtig. Vor allem bei Shootern ist die Bildwiederholrate aber auch ein entscheidender
+Faktor für die Leistungsfähigkeit des Spielers\cite{Claypool_2007}. Daher sollte die Bildwiederholrate möglichst konstant
+bei 60 fps (frames per second) liegen, darf jedoch nie unter 30 fps fallen.
 
 \subsubsection{Implementierung}
 Im Bereich der Computerspiele wird heute überwiegend C++ eingesetzt. Hauptgrund dafür ist die hohe Performance, außerdem
-die OO-Unterstützung und die Tatsache, dass die meisten Tools und Bibliotheken auf C++ basieren oder dazu kompatibel
-sind. Dennoch soll Cydonia in Java entwickelt werden. Der Performance-Faktor kann in diesem Fall weitgehend kompensiert
-werden, da kein grafisch überragender AAA-Titel entstehen soll, sondern der Schwerpunkt auf dem neuartigen Spielkonzept
-liegen soll. Zur Begründung, warum ausgerechnet Java eingesetzt werden soll, obwohl es im Spielebereich nicht gerade
-eine hohe Stellung einnimmt, seien zwei Faktoren als ausschlagebend genannt: Zum einen kann der Autor dieser Arbeit kein
-C++. Zum anderen hat Java im Laufe der Jahre deutlich an Performance zugelegt und ist im Mobil-Bereich seit der
-Verbreitung des Android Betriebsystems stark nachgefragt. Daher ist es an der Zeit den vielen Skeptikern zu zeigen,
-worauf es bei Spielen ankommt, und dass die Entwicklung guter Spiele auch mit Java möglich ist.
+die sehr gut für die Konstruktion virtueller Welten geeignete Objekt-Orientierung und die Tatsache, dass die meisten
+Tools und Bibliotheken auf C++ basieren oder dazu kompatibel sind. Dennoch soll Cydonia in Java entwickelt werden. Der
+Performance-Faktor kann in diesem Fall weitgehend kompensiert werden, da kein grafisch überragender AAA-Titel entstehen
+soll, sondern der Schwerpunkt auf dem neuartigen Spielkonzept liegt. Zur Begründung, warum gerade Java eingesetzt werden
+soll, obwohl es im Spielebereich keine hohe Stellung einnimmt, seien zwei Faktoren als ausschlaggebend genannt: Zum
+einen besitzt der Autor dieser Arbeit bereits größere Erfahrung mit Java, den bekannten Bibliotheken, Tools und
+Entwicklungsumgebungen, wodurch eine effizientere Entwicklung zu erwarten ist. Zum anderen hat Java im Laufe der Zeit
+deutlich an Performance zugelegt und ist im Mobil-Bereich seit der Verbreitung des Android Betriebsystems stark
+nachgefragt, unter anderem auch für die Entwicklung von Spielen. Daher darf das Potential dieser Programmiersprache
+nicht unterschätzt werden.

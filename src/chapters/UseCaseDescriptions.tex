@@ -17,6 +17,19 @@
 \end{tabular}
 
 
+\section{Equipment Wechseln}
+\begin{tabular}{|p{3cm}|p{9cm}|}
+    \hline
+	\textbf{Anwendungs-fallname} & Epuipment wechseln \\ \hline
+	\textbf{Akteure} & Initialisiert von Spieler \\ \hline
+	\multirow{7}{*}{\textbf{Ereignisfluss}} & 1) Der Spieler möchte ein anderes Equipment benutzen. Dazu wechselt er zu dem neuen Equipment. \\[0.1cm]
+	 & \leftskip=1cm 2) Das bisherige Equipment wird deaktiviert, das neue Equipment aktiviert. der Spieler bekommt eine visuelle Rückmeldung über den Wechsel. \\ \hline
+	\textbf{Anfangs-bedingungen} & Der Spieler muss mehrere Equipments zur Verfügung haben. \\ \hline
+	\textbf{Abschluss-bedingungen} & Das neue Equipment muss aktiv und benutzbar sein. \\ \hline
+	\textbf{Qualitäts-anforderungen} & Alle Equipments müssen beim Wechsel ihren Zustand bewahren. \\ \hline
+\end{tabular}
+
+
 \newpage
 \section{Cube bewegen}
 \begin{tabular}{|p{3cm}|p{9cm}|}
@@ -24,13 +37,13 @@
 	\textbf{Anwendungs-fallname} & Cube bewegen \\ \hline
 	\textbf{Akteure} & Initialisiert von Spieler \\ \hline
 	\multirow{7}{*}{\textbf{Ereignisfluss}} & 1) Der Spieler möchte einen Cube bewegen. Dazu visiert er den Cube an. \\[0.1cm]
-	 & 2) Der Spieler benutzt das Equipment um den Cube aufzunehmen. \\[0.1cm]
+	 & 2) Der Spieler benutzt die Funktion "`Aufnehmen"' des Equipments um den Cube aufzunehmen. \\[0.1cm]
 	 & \leftskip=1cm 3) Der Cube wird aus der Spielwelt entfernt und erscheint im Inventar des Equipments. \\[0.1cm]
 	 & 4) Der Spieler kann sich nun beliebig bewegen (siehe Anwendungsfall "`Bewegen"'). \\[0.1cm]
 	 & 5) Der Spieler visiert die Stelle an, an der er den Cube platzieren möchte. \\[0.1cm]
-	 & 6) Der Spieler benutzt das Equipment um den Cube zu platzieren. \\[0.1cm]
+	 & 6) Der Spieler benutzt die Funktion "`Platzieren"' des Equipments um den Cube zu platzieren. \\[0.1cm]
 	 & \leftskip=1cm 7) Der Cube verschwindet aus dem Inventar des Equipments und wird in die Spielwelt eingefügt. \\ \hline
-	\textbf{Anfangs-bedingungen} & Ein beweglicher Cube muss in Sichtweite des Spielers in der Spielwelt vorhanden sein.\newline Der Spieler muss das Pick'n'Place-Equipment ausgewählt haben. \\ \hline
+	\textbf{Anfangs-bedingungen} & Ein beweglicher Cube muss in Sichtweite des Spielers in der Spielwelt vorhanden sein.\newline Der Spieler muss das Pick'n'Place-Equipment ausgewählt haben. \newline Das Pick'n'Place-Equipment muss zur Aufnahme eines Cubes bereit sein. \\ \hline
 	\textbf{Abschluss-bedingungen} & Der Cube muss in der Welt vorhanden sein. \newline Das Pick'n'Place-Equipment muss zur erneuten Aufnahme eines Cubes bereit sein. \\ \hline
 	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
 \end{tabular}
@@ -51,12 +64,12 @@
 \end{tabular}
 
 \newpage
-\section{Einen Punkt erzielen}
+\section{Gegnerische Flagge erobern}
 \begin{tabular}{|p{3cm}|p{9cm}|}
     \hline
 	\textbf{Anwendungs-fallname} & Einen Punkt erzielen \\ \hline
 	\textbf{Akteure} & Initialisiert von Spieler \\ \hline
-	\multirow{7}{*}{\textbf{Ereignisfluss}} & 1) Der Spieler möchte einen Punkt erzielen. Dazu bewegt sich zu seiner Flagge in seiner Basis (siehe Anwendungsfall "`Bewegen"'). \\[0.1cm]
+	\multirow{7}{*}{\textbf{Ereignisfluss}} & 1) Der Spieler möchte die gegnerische Flagge erobern. Dazu bewegt sich zu seiner Flagge in seiner Basis (siehe Anwendungsfall "`Bewegen"'). \\[0.1cm]
 	 & \leftskip=1cm 2) Ist die Flagge des Spielers in seiner Basis, erhält sein Team einen Punkt und die gegnerische Flagge wird zurückgesetzt. \\[0.1cm]
 	 & 3) Ist die Flagge des Spielers nicht in seiner Basis, kann der Spieler warten, bis sie wieder da ist, und dann den Punkt erzielen. \\ \hline
 	\textbf{Anfangs-bedingungen} & Der Spieler muss die gegnerische Flagge bei sich tragen (siehe Anwendungsfall "`Gegnerische Flagge nehmen"'). \\ \hline
@@ -77,10 +90,11 @@
 	 & 4) Der Spieler kann sich nun beliebig bewegen (siehe Anwendungsfall "`Bewegen"'). \\[0.1cm]
 	 & 5) Der Spieler visiert ein weiteres Objekt an. \\[0.1cm]
 	 & 6) Der Spieler benutzt das Equipment um das Objekt zu markieren. \\[0.1cm]
-	 & \leftskip=1cm 7) Die beiden markierten Objekte tauschen ihre Positionen in der Spielwelt. \\ \hline
+	 & \leftskip=1cm 7) Die beiden markierten Objekte tauschen ihre Positionen in der Spielwelt. \\[0.1cm]
+	 & \leftskip=1cm 8) Wenn eines der Objekte ein gegnerischer Spieler ist und dieser die Flagge bei sich trägt, verliert er die Flagge. Sie bleibt an der ursprünglichen Position des gegnerischen Spielers. \\ \hline
 	\textbf{Anfangs-bedingungen} & Zwei Objekte, die der Spieler swappen kann, müssen sich in der Spielwelt befinden. \newline Der Spieler muss das Swapper-Equipment ausgewählt haben. \\ \hline
 	\textbf{Abschluss-bedingungen} & Beide Objekte müssen an der jeweils anderen Position in der Spielwelt sein. \newline Die beiden Objekte müssen unmarkiert sein. \newline Die beiden Markierungen des Swapper-Equipments müssen wieder frei sein. \\ \hline
-	\textbf{Qualitäts-anforderungen} & Setzt der Spieler eine bereits gesetzte Markierung auf ein anderes Objekt, muss die Markierung des ursprünglichen Objekts aufgehoben werden. \\ \hline
+	\textbf{Qualitäts-anforderungen} & Setzt der Spieler eine bereits gesetzte Markierung auf ein anderes Objekt, muss die Markierung des ursprünglichen Objekts aufgehoben werden. \newline Ein Spieler darf die gegnerische Flagge nichtverlieren, wenn er von einem Spieler im \emph{gleichen} Team geswappet wird. \\ \hline
 \end{tabular}
 
 
@@ -91,8 +105,9 @@
 	\textbf{Anwendungs-fallname} & Eigene Flagge zurückholen \\ \hline
 	\textbf{Akteure} & Initialisiert von Spieler \\ \hline
 	\multirow{7}{*}{\textbf{Ereignisfluss}} & 1) Der Spieler möchte die Flagge seines Teams zurückholen. Dazu bewegt er sich zu der Flagge (siehe Anwendungsfall "`Bewegen"'). \\[0.1cm]
-	 & \leftskip=1cm 2) Wenn der Spieler die Flagge berührt, wird die Flagge zurückgesetzt. Der Spieler bekommt angezeigt, dass die Flagge wieder in der Basis ist. \\ \hline
-	\textbf{Anfangs-bedingungen} & Die Flagge des Spielers muss sich außerhalb seiner Basis in der Spielwelt befinden. \newline Kein Spieler darf die Flagge bei sich tragen. \newline Die Flagge muss für den Spieler erreichbar sein. \\ \hline
+	 & 2) Falls ein gegnerischer Spieler die Flagge bei sich trägt, muss der Spieler den gegnerischen Spieler swappen, damit dieser die Flagge verliert (siehe Anwendungsfall "`Objekte swappen"'). \\[0.1cm]
+	 & \leftskip=1cm 3) Wenn der Spieler die Flagge berührt, wird die Flagge zurückgesetzt. Der Spieler bekommt angezeigt, dass die Flagge wieder in der Basis ist. \\ \hline
+	\textbf{Anfangs-bedingungen} & Die Flagge des Spielers darf sich nicht in ihrer Basis befinden. \\ \hline
 	\textbf{Abschluss-bedingungen} & Die Flagge des Spielers muss sich in ihrer Basis befinden. \\ \hline
 	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
 \end{tabular}

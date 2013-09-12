@@ -1,6 +1,6 @@
-\section{Anwendungsfall-Modell}
+\section{Anwendungsfälle}
 
-"`Ein Anwendungsfall ist eine Abstraktion, die alle möglichen Szenarien beschreiibt, die die beschriebene Funktionalität enthalten."'\cite[S. 76]{Bruegge_2004}\\
+\quotation{"`Ein Anwendungsfall ist eine Abstraktion, die alle möglichen Szenarien beschreibt, die die beschriebene Funktionalität enthalten."'\cite[S. 76]{Bruegge_2004}}\\
 % Ein Szenario ist eine Instanz eines Anwendungsfalls; wenn wir diesen Anwendungsfall identifizieren, haben wir damit
 % alle möglichen Szenarien für eine gegebene Funktionalität.\cite[S. 160]{Bruegge_2004}
 
@@ -16,14 +16,46 @@ Abbildung \ref{figure:usecases} gibt einen Überblick über die Anwendungsfälle au
 \label{figure:usecases}
 \end{figure}
 
-\subsection{Cube bewegen}
-
 \subsection{Bewegen}
+Zum Spiel gehört, dass der Spieler sich in einer virtuellen dreidimensionalen Welt bewegen kann. Er steuert seinen
+virtuellen Charakter und sieht die Welt aus dessen Perspektive. Zur Bewegung gehört das Laufen nach vorne und hinten.
+Außerdem kann der Spieler seitwärts gehen während die Blickrichtung unverändert nach vorne bleibt. Die Blickrichtung
+kann der Spieler aus der Wagrechten um 90° nach oben und 90° nach unten verändern und sich beliebig weit um die eigene
+vertikale Achse drehen. Des weiteren kann der Spieler im Stand sowie während des Laufens springen um zum Beispiel
+Hindernisse zu überwinden. Die maximale Sprunghöhe reicht aus um auf einen auf gleiche Bodenhöhe befindlichen Cube zu
+springen.
 
-\subsection{Einen Punkt erzielen}
+\subsection{Equipment wechseln}
+Der Spieler hat unterschiedliche Equipments mit unterschiedlichen Funktionaliäten bei sich. Zwischen diesen Equipments
+kann er während des Spiel wechseln, um alle Funktionalitäten auszunutzen. Equipments behalten ihren Zustand während sie
+nicht ausgewählt sind.
 
-\subsection{Flagge nehmen}
+\subsection{Cube bewegen}
+Der Spieler kann manche Cubes aufnehmen und an beliebiger Stelle wieder platzieren. Dazu visiert er den Cube an und
+nutzt das Pick'n'Place-Equipment um den Cube aufzunehmen. Der Cube wird dann aus der Spielwelt entfernt und im Equipment
+zwischengelagert. Mit dem Cube im Gepäck kann sich der Spieler beliebig durch die Spielwelt bewegen, wie es der
+Anwendungsfall "`Bewegen"' beschreibt. Um den Cube wieder zu platzieren visiert der Spieler die neue Position an und
+nutzt wieder das Equipment.
+
+\subsection{Gegnerische Flagge nehmen}
+Jedes Team hat eine Flagge, die sich zu Beginn in der jeweiligen Basis befindet. Berührt ein Spieler die gegnerische
+Flagge, nimmt er sie auf. Er kann sich dann mit der Flagge durch die Spielwelt bewegen, wie es der Anwendungsfall
+"`Bewegen"' beschreibt.
+
+\subsection{Gegnerische Flagge erobern}
+Um Punkte zu erzielen müssen die Spieler eines Teams die Flagge die gegnerische Flagge in ihre Basis holen. Dazu muss
+der Spieler, der die gegnerische Flagge bei sich trägt, die eigene Flaggenbasis berühren. Für die erfolgreiche Eroberung
+der Flagge erhält das Team einen Punkt. Anschließend wird die Flagge an ihren Ursprungort (in ihrer Flaggenbasis)
+zurückgesetzt.
 
 \subsection{Objekte swappen}
+Um Gegner von der Flagge zu trennen oder sich den Weg frei zu kämpfen, kann der Spieler zwei Objekte swappen. Spieler
+und Cubes können zu diesem Zweck markiert werden und tauschen dann die Position in der Spielwelt. Wird ein Spieler, der
+die gegnerische Flagge bei sich trägt, von einem Gegner geswapt, bleibt die Flagge an der ursprünglichen Position des
+Spielers. Somit können können Gegner von der eigenen Flagge getrennt werden, um diese zurückholen zu können.
 
-\subsection{Flagge zurückholen}
+
+\subsection{Eigene Flagge zurückholen}
+Ist die Flagge eines Teams nicht mehr in ihrer Basis, sondern befindet sich an einer anderen Stelle in der Spielwelt,
+kann das Team keine Punkte durch Eroberung der gegnerischen Flagge erzielen. Um die eigene Flagge zurückzuholen, muss ein
+Spieler des Teams die Flagge berühren. Dann wird die Flagge an ihren Ausgangspunkt zurückgesetzt.
