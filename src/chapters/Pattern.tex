@@ -8,17 +8,18 @@ In Folgenden werden einige Komponenten von Cydonia vorgestellt und erläutert, wi
 zum Einsatz kommen.
 
 
-\subsection{Equipment-Erzeugung mittels abstrakter Fabrik}
+\subsection{Equipment-Erzeugung mittels Abstrakte-Fabrik-Muster}
 Da die Equipments der Spieler unterschiedlich sein können und auch in der Zukunft erweiterbar sein sollen, werden sie
 von einer Fabrik-Klasse erzeugt. Die Equipments müssen in Client und Server jedoch unterschiedliche Implementierungen
-haben. Im Client soll das Equipment grafisch dargestellt und Sounds abgespielt werden. Im Server dagegen soll
+haben. Im Client soll das Equipment grafisch dargestellt und Sounds abgespielt werden. Im Server dagegen sollen
 stattdessen die Auswirkungen der Benutzung berechnet werden. Daher kommt hier das Abstrakte-Fabrik-Muster zum Einsatz.
 Das Abstrakte-Fabrik-Muster setzt Spezifikationsvererbung ein, um die Schnittstelle eines Produkts von seiner
 Implementierung zu entkoppeln. Um sicherzustellen, dass auf jeder Plattform stets nur die richtigen Objekte erzeugt
 werden, also eine konsistente Menge von Objekten vorhanden ist, dürfen Objekte nur über eine Fabrik erzeugt
-werden\cite{Bruegge_2004}. Im Fall der Equipments existiert eine ClientEquipmentFactory und eine ServerEquipmentFactory
-die jeweils die von AbstractEquipmentFactory geerbten Methoden zur Erzeugung von Pick'n'Place- und Swapper-Equipments
-implementieren. Abbildung \ref{figure:equipment_factory} zeigt die Struktur als UML-Klassendiagramm.
+werden\cite{Bruegge_2004}. Im Fall der Equipments existieren eine ClientEquipmentFactory und eine
+ServerEquipmentFactory, die jeweils die von AbstractEquipmentFactory geerbten Methoden zur Erzeugung von Pick'n'Place-
+und Swapper-Equipments implementieren. Abbildung \ref{figure:equipment_factory} zeigt die Struktur als
+UML-Klassendiagramm.
 
 \begin{figure}[htbp]
 \centering
@@ -29,9 +30,9 @@ implementieren. Abbildung \ref{figure:equipment_factory} zeigt die Struktur als 
 
 \subsection{Szenen-Graph-Erstellung mithilfe des Kompositionsmusters}
 \label{subsection:SceneGraph_CompositePattern}
-Das Kompositionsmuster ist eine Lösung, um eine solche Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass
+Das Kompositionsmuster ist eine Lösung, um eine Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass
 sowohl einzelne Objekte als auch Kompositionen von Objekten durch eine gemeinsame Schnittstelle einheitlich behandelt
-werden können. Abbildung \ref{figure:composition_spatial} zeigt die Nutzung des Kompositionsmusters zur Implementierung des
+werden können\cite[S. 724]{Bruegge_2004}. Abbildung \ref{figure:composition_spatial} zeigt die Nutzung des Kompositionsmusters zur Implementierung des
 Szenen-Graphen in der jMonkeyEngine3. Die Komponente heißt hier Spatial. Geometry, die Blatt-Klasse, stellt ein
 tatsächliches Objekt in der virtuellen Welt dar, definiert durch Formen und Materialien. Das Kompositum ist Node,
 welches wiederum andere Spatials als Kindelemente enthalten kann.\\
@@ -43,13 +44,13 @@ welches wiederum andere Spatials als Kindelemente enthalten kann.\\
 \label{figure:composition_spatial}
 \end{figure}
 
-Ein Beispiel für die Zusammensetzung der virtuellen Welt aus Spatials, kann anhand des Avatars eines Spieler gegeben
+Ein Beispiel für die Zusammensetzung der virtuellen Welt aus Spatials kann anhand des Avatars eines Spielers gegeben
 werden. Abbildung \ref{figure:composition_avatar} veranschaulicht die Struktur der Spielfigur. Der Wurzelknoten hat drei
 Kindelemente: Kopf, Oberkörper, Unterkörper. Der Kopf ist vom Typ Geometry, während Ober- und Unterkörper Nodes sind,
 die wiederum Kindelemente besitzen, nämlich Arme, Beine und Torso. Die Unterteilung könnte natürlich auch noch weiter
-gehen: ein Arm könnte zum Beispiel wiederum ein Knoten sein, der aus Oberarm, Unterarm und Hand, besteht, wobei die Hand
-ebenfalls aus einzelnen Fingern bestehen könnte, usw. Beliebig feingliedrige Strukturen sind möglich, je nach
-gewünschtem Detailgrad der Modelle.
+gehen: Ein Arm könnte zum Beispiel wiederum ein Knoten sein, der aus Oberarm, Unterarm und Hand besteht, wobei die Hand
+ebenfalls aus einzelnen Fingern bestehen könnte usw. Beliebig feingliedrige Strukturen sind möglich, je nach gewünschtem
+Detailgrad der Modelle.
 
 \begin{figure}[htbp]
 \centering
@@ -59,9 +60,9 @@ gewünschtem Detailgrad der Modelle.
 \end{figure}
 
 \subsection{Event-System mit Beobachtermuster}
-Viele Prozesse in Cydonia werden vom Auftreten eines bestimmten Ereignisses angestoßen. Um diese Ereignisse zu verteilen
-gibt es eine zentrale Ereignis-Maschine. Objekte, die über das Auftreten der Ereignisse informiert werden wollen,
-registrieren sich als Beobachter bei der Ereignis-Maschine. Außerdem stellt sie eine Methode zum Auslösen von
+Viele Prozesse in Cydonia werden vom Auftreten eines bestimmten Ereignisses angestoßen. Um diese Ereignisse zu
+verteilen, gibt es eine zentrale Ereignis-Maschine. Objekte, die über das Auftreten der Ereignisse informiert werden
+wollen, registrieren sich als Beobachter bei der Ereignis-Maschine. Außerdem stellt sie eine Methode zum Auslösen von
 Ereignissen in Form von Objekten des Typs Event (oder eines Subtyps) zur Verfügung. Die Ereignisse werden an jeden
 Beobachter in einem eigenen Thread weitergereicht, sodass die Bearbeitung parallel stattfinden kann und eine
 aufwändigere Bearbeitung nicht die Weiterleitung des Ereignisses an andere Beobachter verzögert. Abbildung
