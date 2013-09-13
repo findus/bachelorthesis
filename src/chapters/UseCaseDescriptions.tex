@@ -7,13 +7,11 @@
 	\textbf{Anwendungs-fallname} & Bewegen \\ \hline
 	\textbf{Akteure} & Initialisiert von Spieler \\ \hline
 	\multirow{7}{*}{\textbf{Ereignisfluss}} & 1) Der Spieler möchte sich in der virtuellen Welt bewegen. Dazu visiert er sein Ziel an. \\[0.1cm]
-	 & 2) Der Spieler kann vorwärts oder rückwärts gehen. \\[0.1cm]
-	 & 3) Der Spieler kann seitwärts gehen. \\[0.1cm]
-	 & 4) Der Spieler kann springen. \\[0.1cm]
-	 & \leftskip=1cm 5) Die Position des Spielers in der Welt ändert sich entsprechend. \\ \hline
-	\textbf{Anfangs-bedingungen} & keine Ahnung \\ \hline
-	\textbf{Abschluss-bedingungen} & keine Ahnung \\ \hline
-	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
+	 & 2) Der Spieler kann vorwärts oder rückwärts gehen, seitwärts gehen, seine Blickrichtung ändern oder springen. \\[0.1cm]
+	 & \leftskip=1cm 3) Die Position und Blickrichtung des Spielers in der Welt ändert sich entsprechend. \\ \hline
+	\textbf{Anfangs-bedingungen} &  \\ \hline
+	\textbf{Abschluss-bedingungen} &  \\ \hline
+	\textbf{Qualitäts-anforderungen} & Stößt der Spieler an Hindernisse, muss die Bewegung gestoppt werden. \newline Die Steuerbefehle müssen gleichzeitig verwendbar sein. \\ \hline
 \end{tabular}
 
 
@@ -45,7 +43,7 @@
 	 & \leftskip=1cm 7) Der Cube verschwindet aus dem Inventar des Equipments und wird in die Spielwelt eingefügt. \\ \hline
 	\textbf{Anfangs-bedingungen} & Ein beweglicher Cube muss in Sichtweite des Spielers in der Spielwelt vorhanden sein.\newline Der Spieler muss das Pick'n'Place-Equipment ausgewählt haben. \newline Das Pick'n'Place-Equipment muss zur Aufnahme eines Cubes bereit sein. \\ \hline
 	\textbf{Abschluss-bedingungen} & Der Cube muss in der Welt vorhanden sein. \newline Das Pick'n'Place-Equipment muss zur erneuten Aufnahme eines Cubes bereit sein. \\ \hline
-	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
+	\textbf{Qualitäts-anforderungen} & Unterbricht der Spieler die Aktion zwischen Schritt 3 und Schritt 6, muss der Cube im Inventar erhalten bleiben, bis der Spieler die Aktion fortsetzt. \\ \hline
 \end{tabular}
 
 \newpage
@@ -60,7 +58,7 @@
 	 & \leftskip=1cm 4) Die Flagge bewegt sich mit dem Spieler mit. \\ \hline
 	\textbf{Anfangs-bedingungen} & Kein Spieler darf die gegnerische Flagge bei sich tragen.\newline Die gegnerische Flagge muss für der Spieler erreichbar sein. \\ \hline
 	\textbf{Abschluss-bedingungen} & Die Flagge muss sich mit dem Spieler bewegen. \\ \hline
-	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
+	\textbf{Qualitäts-anforderungen} & Der Status der Flagge muss dem Spieler zu jeder Zeit angezeigt werden. \\ \hline
 \end{tabular}
 
 \newpage
@@ -74,7 +72,7 @@
 	 & 3) Ist die Flagge des Spielers nicht in seiner Basis, kann der Spieler warten, bis sie wieder da ist, und dann den Punkt erzielen. \\ \hline
 	\textbf{Anfangs-bedingungen} & Der Spieler muss die gegnerische Flagge bei sich tragen (siehe Anwendungsfall "`Gegnerische Flagge nehmen"'). \\ \hline
 	\textbf{Abschluss-bedingungen} & Die gegnerische Flagge muss sich wieder in ihrer Basis befinden. \\ \hline
-	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
+	\textbf{Qualitäts-anforderungen} & Der Status der Flagge muss dem Spieler zu jeder Zeit angezeigt werden. \\ \hline
 \end{tabular}
 
 
@@ -109,5 +107,5 @@
 	 & \leftskip=1cm 3) Wenn der Spieler die Flagge berührt, wird die Flagge zurückgesetzt. Der Spieler bekommt angezeigt, dass die Flagge wieder in der Basis ist. \\ \hline
 	\textbf{Anfangs-bedingungen} & Die Flagge des Spielers darf sich nicht in ihrer Basis befinden. \\ \hline
 	\textbf{Abschluss-bedingungen} & Die Flagge des Spielers muss sich in ihrer Basis befinden. \\ \hline
-	\textbf{Qualitäts-anforderungen} & keine Ahnung \\ \hline
+	\textbf{Qualitäts-anforderungen} & Der Status der Flagge muss dem Spieler zu jeder Zeit angezeigt werden. \\ \hline
 \end{tabular}

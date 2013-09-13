@@ -1,8 +1,10 @@
 \section{Einsatz von Entwurfsmustern}
 
+\begin{quotation}
 "`Entwurfsmuster sind Lösungswissen für allgemeine bzw. immer wiederkehrende Probleme [\ldots]. Ein Entwurfsmuster
 besteht aus wenigen Klassen, die durch den Einsatz von Delegation und Vererbung eine robuste und modifizierbare Lösung
-ermöglichen."' \cite[S. 719]{Bruegge_2004}\\
+ermöglichen."' \cite[S. 719]{Bruegge_2004}
+\end{quotation}
 
 In Folgenden werden einige Komponenten von Cydonia vorgestellt und erläutert, wie bei ihrer Entwicklung Entwurfsmuster
 zum Einsatz kommen.
@@ -16,7 +18,7 @@ stattdessen die Auswirkungen der Benutzung berechnet werden. Daher kommt hier da
 Das Abstrakte-Fabrik-Muster setzt Spezifikationsvererbung ein, um die Schnittstelle eines Produkts von seiner
 Implementierung zu entkoppeln. Um sicherzustellen, dass auf jeder Plattform stets nur die richtigen Objekte erzeugt
 werden, also eine konsistente Menge von Objekten vorhanden ist, dürfen Objekte nur über eine Fabrik erzeugt
-werden. \cite{Bruegge_2004} Im Fall der Equipments existieren eine ClientEquipmentFactory und eine
+werden.\cite{Bruegge_2004} Im Fall der Equipments existieren eine ClientEquipmentFactory und eine
 ServerEquipmentFactory, die jeweils die von AbstractEquipmentFactory geerbten Methoden zur Erzeugung von Pick'n'Place-
 und Swapper-Equipments implementieren. Abbildung \ref{figure:equipment_factory} zeigt die Struktur als
 UML-Klassendiagramm.
@@ -32,10 +34,10 @@ UML-Klassendiagramm.
 \label{subsection:SceneGraph_CompositePattern}
 Das Kompositionsmuster ist eine Lösung, um eine Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass
 sowohl einzelne Objekte als auch Kompositionen von Objekten durch eine gemeinsame Schnittstelle einheitlich behandelt
-werden können. \cite[S. 724]{Bruegge_2004} Abbildung \ref{figure:composition_spatial} zeigt die Nutzung des Kompositionsmusters zur Implementierung des
+werden können.\cite[S. 724]{Bruegge_2004} Abbildung \ref{figure:composition_spatial} zeigt die Nutzung des Kompositionsmusters zur Implementierung des
 Szenen-Graphen in der jMonkeyEngine3. Die Komponente heißt hier Spatial. Geometry, die Blatt-Klasse, stellt ein
 tatsächliches Objekt in der virtuellen Welt dar, definiert durch Formen und Materialien. Das Kompositum ist Node,
-welches wiederum andere Spatials als Kindelemente enthalten kann.\\
+welches wiederum andere Spatials als Kindelemente enthalten kann.\par
 
 \begin{figure}[htbp]
 \centering
@@ -61,12 +63,13 @@ Detailgrad der Modelle.
 
 \subsection{Event-System mit Beobachtermuster}
 Viele Prozesse in Cydonia werden vom Auftreten eines bestimmten Ereignisses angestoßen. Um diese Ereignisse zu
-verteilen, gibt es eine zentrale Ereignis-Maschine. Objekte, die über das Auftreten der Ereignisse informiert werden
-wollen, registrieren sich als Beobachter bei der Ereignis-Maschine. Außerdem stellt sie eine Methode zum Auslösen von
-Ereignissen in Form von Objekten des Typs Event (oder eines Subtyps) zur Verfügung. Die Ereignisse werden an jeden
-Beobachter in einem eigenen Thread weitergereicht, sodass die Bearbeitung parallel stattfinden kann und eine
-aufwändigere Bearbeitung nicht die Weiterleitung des Ereignisses an andere Beobachter verzögert. Abbildung
-\ref{figure:event_system} stellt das Ereignis-System als UML-Klassendiagramm dar.
+verteilen, gibt es eine zentrale Ereignis-Maschine, die das Beobachtermuster implementiert.\cite[S. 726]{Bruegge_2004}
+Objekte, die über das Auftreten neuer Ereignisse informiert werden wollen, registrieren sich als Beobachter bei der
+Ereignis-Maschine. Außerdem stellt sie eine Methode zum Auslösen von Ereignissen in Form von Objekten des Typs Event
+(oder eines Subtyps) zur Verfügung. Die Ereignisse werden an jeden Beobachter in einem eigenen Thread weitergereicht,
+sodass die Bearbeitung parallel stattfinden kann und eine aufwändigere Bearbeitung nicht die Weiterleitung des
+Ereignisses an andere Beobachter verzögert. Abbildung \ref{figure:event_system} stellt das Ereignis-System als
+UML-Klassendiagramm dar.
 
 \begin{figure}[htbp]
 \centering

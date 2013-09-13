@@ -272,10 +272,6 @@ FUNCTION {format.editors}
 { editor empty$
     { "" }
     { editor format.names
-      editor num.names$ #1 >
-	{ ", editors" * }
-	{ ", editor" * }
-      if$
     }
   if$
 }

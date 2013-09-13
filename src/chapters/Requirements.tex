@@ -3,12 +3,13 @@
 
 \subsection{Funktionale Anforderungen}
 
-\subsubsection{FA 1: Darstellung der virtuellen Welt}
-Das Spiel muss die virtuelle Spielwelt, bestehend aus farbigen Würfeln, Flaggen und Spielern grafisch
-dreidimensional darstellen. Der Anwender soll dabei die virtuelle Welt aus der Perspektive seines Avatars sehen.
+\subsubsection{Darstellung der virtuellen Welt}
+Der Spieler soll in der Lage sein, die virtuelle Spielwelt, bestehend aus farbigen Würfeln, Flaggen und den Avataren
+anderer Spieler dreidimensional grafisch zu sehen. Der Spieler soll dabei die virtuelle Welt aus der Perspektive seines
+Avatars sehen.
 
-\subsubsection{FA 2: Steuerung}
-Das Spiel muss fähig sein, Eingaben des Anwenders via Maus und Tastatur zur Steuerung des Avatars umzusetzen. Dazu gehört:
+\subsubsection{Steuerung}
+Der Spieler soll in der Lage sein, seinen Avatar via Maus und Tastatur zu steuern. Dazu gehört:
 \begin{itemize}
   \item Bewegen in vier Richtungen
   \item Springen
@@ -17,9 +18,16 @@ Das Spiel muss fähig sein, Eingaben des Anwenders via Maus und Tastatur zur Steu
   \item Benutzen des Equipments
 \end{itemize}
 
-\subsubsection{FA 4: }
-Das Spiel muss dem Spieler die Möglichkeit bieten die Flagge aufzunehmen.
-Das Spiel muss dem Spieler die Möglichkeit bieten die Flagge
+\subsubsection{Manipulation der Spielwelt}
+Ein wesentlicher Bestandteil des Spielkonzepts von Cydonia ist die Möglichkeit, während des Spiels die virtuelle Welt
+umzugestalten. Dazu soll der Spieler in der Lage sein, einzelne Cubes aus der Welt entfernen und an der gewünschten
+Stelle wieder einzusetzen. Da manche Cubes beweglich sind und andere nicht, soll der Spieler die Cubes anhand ihrer
+grafischen Darstellung (z.B. anhand ihrer Farbe) unterscheiden können.
+
+\subsubsection{Spielablauf}
+Der Spielmodus von Cydonia ist "`Capture the Flag"'. Der Spieler soll daher in der Lage sein, ein Team zu wählen, die
+Flagge des Gegners zu nehmen, zu tragen und in seine Basis zu bringen. Außerdem muss der Spieler andere Spieler daran
+hindern können seine eigene Flagge wegzunehmen oder, falls dies bereits geschehen ist, wieder zurückzuholen.
 
 
 \subsection{Nicht-funktionale Anforderungen}
@@ -30,21 +38,21 @@ Erfüllung der Vorgaben eingesetzt werden) und Zufriedenheit des Benutzers - nich
 Fall das Spiel) angewendet werden. Da ein Spiel möglichst lange unterhalten soll, ist Effizienz im Sinne möglichst
 schneller Erledigung hinfällig. Außerdem haben Spiele oft keinen definierten Endpunkt, an dem das Spiel als
 abgeschlossen gilt. Wenn sie einen solchen Endpunkt besitzen, gibt es oft viele Wege, diesen zu
-erreichen. \cite{Federoff_2002} Man kann allerdings die übliche Heuristik durchaus auch auf Spiele anwenden, wenn man
-lediglich das Interface unabhängig vom Spielablauf betrachtet.\\
+erreichen.\cite{Federoff_2002} Man kann allerdings die übliche Heuristik durchaus auch auf Spiele anwenden, wenn man
+lediglich das Interface unabhängig vom Spielablauf betrachtet.\par
 
 Vor allem in schnellen Spielen, zu denen Shooter tendenziell immer gehören, ist es für den Spieler wichtig, alle im
 Spielfluss benötigten Funktionen per einfachen Tastendruck zu erreichen. Nicht umsonst ist bei der für Shooter üblichen
 Steuerung Zielen und Abfeuern der Waffe in einer Hand, der "`Maushand"', vereint. Gleichzeitig übernimmt die andere Hand
 alle für die Bewegung des Avatars nötigen Eingaben: vorwärts, rückwärts, seitwärts, springen, ducken usw.. Seltener
 gebrauchte Funktionen werden meist ebenso mit schlechter erreichbaren Tasten verbunden wie Funktionen, bei denen die
-Reaktionsgeschwindigkeit nicht allzu spielentscheidend ist.\\
+Reaktionsgeschwindigkeit nicht allzu spielentscheidend ist.\par
 
 Zur Usability gehört aber nicht nur die schnelle und einfache Eingabe von Befehlen, sondern auch die Übersichtlichkeit
 der grafischen Anzeige. Da Spieler in dreidimensionalen Spielen stark auf die Darstellung der virtuellen Welt fokussiert
 sind, müssen zusätzliche Informationen (wie übrige Zeit, Punktestand, Position der Teammitglieder, etc.) jederzeit
 übersichtlich und mit starkem Kontrast zum Hintergrund dargestellt werden, sodass der Spieler mit einem kurzen Blick
-alle nötigen Informationen erhalten kann.\\
+alle nötigen Informationen erhalten kann.\par
 
 Und schließlich ist auch in Spielen die einfache Bedienbarkeit aller Menüs von Bedeutung. Dazu müssen die einzelnen
 Optionen sinnvoll gruppiert und mit möglichst wenigen Klicks erreichbar sein.
@@ -60,7 +68,7 @@ Cheating"' können hier möglich sein.
 Performance bezieht sich in diesem Fall auf das Simulieren (u.a. Physikberechnung) und Rendern der virtuellen Welt, da
 dies typischerweise den "`Flaschenhals"' in der Spiele-Software darstellt. Ein konstanter, nicht zu langsamer Bildaufbau ist
 für die Immersion des Spielers sehr wichtig. Vor allem bei Shootern ist die Bildwiederholrate aber auch ein entscheidender
-Faktor für die Leistungsfähigkeit des Spielers. \cite{Claypool_2007} Daher sollte die Bildwiederholrate möglichst konstant
+Faktor für die Leistungsfähigkeit des Spielers.\cite{Claypool_2007} Daher sollte die Bildwiederholrate möglichst konstant
 bei 60 fps (frames per second) liegen, darf jedoch nie unter 30 fps fallen.
 
 \subsubsection{Implementierung}

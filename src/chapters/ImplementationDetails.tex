@@ -1,24 +1,6 @@
 \section{Details der Implementierung}
 
 
-\subsection{Dynamisches Modell}
-
-Das dynamische Modell beschreibt die Interaktionen zwischen den Entitäten des statischen Modells.
-
-\subsubsection{Neuer Spieler tritt bei}
-Wenn ein neuer Spieler dem Spiel beitritt, muss er sich zunächst beim Server melden. Dieser erstellt ein neues
-Spieler-Objekt und informiert die bereits vorhandenen Client-Instanzen über den Beitritt und die Daten des neuen
-Spielers.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.0\textwidth]{images/sequence_player_joins}
-\caption[UML-Sequenzdiagramm: Beitritt eines Spielers]{UML-Sequenzdiagramm: Beitritt eines Spielers}
-\label{sequence_player_joins}
-\end{figure}
-
-
-
 \subsection{Netzcode}
 \label{subsubsection:Netcode}
 
@@ -34,19 +16,19 @@ Die wichtigsten Aufgaben des Netzcodes sind:
 
 Der Netzcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleineres Spiel
 ausschließlich als Testplattform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
-im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios. \cite{Inerle_2011}\\
+im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios.\cite{Inerle_2011}\par
 
 Cydonia verwendet die SpiderMonkey-Bibliothek, mit deren Hilfe Nachrichten über das Netzwerk ausgetauscht werden können
 (vgl. dazu \ref{subsubsection:SpiderMonkey}). Drückt zum Beispiel ein Spieler die Taste "`w"', ermittelt das
 Input-Mapping den Steuerbefehl "`move forward"'. Daraus wird eine InputMessage erstellt, die die ID des Spielers, den
 Befehl "`move forward"' sowie einen Parameter, der das Drücken (im Gegensatz zum Loslassen) der Taste kennzeichnet,
 enthält. Diese Nachricht wird an den Server geschickt. Der Server verarbeitet die erhaltene Nachricht im nächsten Zyklus
-und simuliert in den folgenden Zyklen die Vorwärtsbewegung des Spielers.\\
+und simuliert in den folgenden Zyklen die Vorwärtsbewegung des Spielers.\par
 
 In regelmäßigen Abständen (standardmäßig alle 50 ms) generiert der Server einen sog. Snapshot der virtuellen Welt.
 Dieser enthält die Positionen und Bewegungsrichtungen aller dynamischen Objekte. Eine Nachricht, die den Snapshot
 enthält, wird an die Clients geschickt, die ihre Simulation entsprechend anpassen, um die neuen Informationen zu
-berücksichtigen.\\
+berücksichtigen.\par
 
 Bei einer Latenz von 150 ms zwischen Client und Server würde der Spieler das visuelle Feedback zu seiner Eingabe
 frühestens 150 ms später erhalten. Eine solche Verzögerung fühlt sich unnatürlich an und stört den Spielfluss. Deshalb
@@ -56,15 +38,41 @@ zwischen den Spielerpositionen. Der Client muss die Spielerposition des Servers 
 Autorität über das Spielgeschehen besitzt. Damit der Spieler nicht plötzlich zurückspringt, wodurch der Spielfluss
 wiederum gestört und somit nichts gewonnen wäre, passt der Client die Position des Spielers in kleinen Schritten über
 einen kurzen Zeitraum hinweg an die vom Server vorgegebene Position an. Für den Spieler sieht es dann so aus, als ob er
-einen kurzen Moment etwas langsamer laufen würde, wobei diese Veränderung kaum wahrnehmbar ist.\\
+einen kurzen Moment etwas langsamer laufen würde, wobei diese Veränderung kaum wahrnehmbar ist.\par
 
 Diese Maßnahme wird auch als Input-Prediction bezeichnet. Sie ist nur eine von vielen möglichen Maßnahmen zur Vermeidung
 von latenzbasierten Problemen. Vor allem bei Spielen im Internet, wo die Latenzzeiten im Vergleich zum lokalen Netzwerk
 höher sind, sind weitere Vorkehrungen nötig, um einen fehlerfreien Spielfluss zu
-gewährleisten. \cite{valve_multiplayer}\\
+gewährleisten.\cite{valve_multiplayer}\par
 
 Die Entwickler-Community der Source-Engine des Entwicklers und Publishers Valve hat eine sehr ausführliche und
 verständliche Dokumentation der Funktionsweise ihres Netzcodes veröffentlicht. Darin finden sich Beschreibungen der
-Techniken Entity-Interpolation, Input-Prediction und Lag-Compensation. \cite{valve_multiplayer} Zusammengenommen
+Techniken Entity-Interpolation, Input-Prediction und Lag-Compensation.\cite{valve_multiplayer} Zusammengenommen
 erreichen diese Techniken einen deutlich höheren Wirkungsgrad. Deren Beschreibung sowie Implementierung übersteigen
-jedoch den Rahmen dieser Arbeit.\\
+jedoch den Rahmen dieser Arbeit.
+
+
+
+\subsection{Kommunikationsverlauf bei Spielerbeitritt}
+Wenn ein neuer Spieler dem Spiel beitritt, registriert seine Client-Instanz zunächst beim Server. Der Server bestätigt
+die Verbindung und schickt dem Client auf dessen Nachfrage den aktuellen Zustand der Spielwelt, der anderen Spieler und
+des Spielverlaufs. Der Spieler bekommt nun ein Einstiegsmenü angezeigt in dem er das Team wählen kann. Sobald der
+Spieler seine Auswahl bestätigt, sendet der Client den Spielerbeitritt-Befehl an den Server. Dieser informiert alle
+Client-Instanzen über den Beitritt und die Daten des neuen Spielers. Der Client des Spielers sendet den Teamwahl-Befehl
+an den Server. Der Server reagiert wiederum mit dem Versenden eines entsprechenden Ereignisses an alle Client-Instanzen.
+Nach Erhalt dieses Ereignisses stellt der Client die Spielwelt dar. In Abbildung \ref{figure:sequence_player_joins} wird
+die Kommunikation zwischen den involvierten Komponenten und Akteuren in Form eines UML-Sequenzdiagramms dargestellt.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{images/sequence_player_joins}
+\caption[UML-Sequenzdiagramm: Beitritt eines Spielers]{UML-Sequenzdiagramm: Beitritt eines Spielers}
+\label{figure:sequence_player_joins}
+\end{figure}
+
+
+\subsection{Zustände und Zustandsübergänge}
+Die Client-Instanz des Spiels durchläuft bei der Ausführung eine Reihe von Zuständen. In Abhängigkeit des Zustands
+reagieren die Komponenten des Systems unterschiedlich auf Benutzereingaben und Ereignisse. 
+
+http://www.philipphauer.de/study/se/design-pattern/state.php
