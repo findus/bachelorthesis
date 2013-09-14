@@ -30,6 +30,7 @@ UML-Klassendiagramm.
 \label{figure:equipment_factory}
 \end{figure}
 
+
 \subsection{Szenen-Graph-Erstellung mithilfe des Kompositionsmusters}
 \label{subsection:SceneGraph_CompositePattern}
 Das Kompositionsmuster ist eine Lösung, um eine Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass
@@ -61,6 +62,7 @@ Detailgrad der Modelle.
 \label{figure:composition_avatar}
 \end{figure}
 
+
 \subsection{Event-System mit Beobachtermuster}
 Viele Prozesse in Cydonia werden vom Auftreten eines bestimmten Ereignisses angestoßen. Um diese Ereignisse zu
 verteilen, gibt es eine zentrale Ereignis-Maschine, die das Beobachtermuster implementiert.\cite[S. 726]{Bruegge_2004}
@@ -73,7 +75,26 @@ UML-Klassendiagramm dar.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{images/event_system}
+\includegraphics[width=0.8\textwidth]{images/event_system}
 \caption[UML-Klassendiagramm: Das Ereignis-System]{UML-Klassendiagramm: Das Ereignis-System}
 \label{figure:event_system}
+\end{figure}
+
+
+\subsection{Zustandsabhängige Logik mittels Zustandsmuster}
+Die Client-Instanz des Spiels steuert gewisse Abläufe in Abhängigkeit ihres aktuellen Zustands. Zum Beispiel dürfen
+Mausbewegungen und -klicks nicht in Bewegungen und Aktionen des Avatars umgesetzt werden, solange das Menü offen ist, da
+der Spieler sonst unkontrollierte Handlungen in der Spielwelt vollzieht. Um zu verhindern, dass zustandsabhängige Logik
+über den gesamten Programmcode verteilt implementiert wird, kommt das Zustandsmuster zum Einsatz. "`Ziel des
+Zustandsmusters ist es, die zustandsabhängige Logik auf Klassen zu verteilen, die den jeweiligen Zustand des Systems
+repräsentieren."'\cite[229]{Metsker_2006} Vereinfacht dargestellt kann das Spiel zwei Zustände ("`Running"' oder "`Menu"')
+haben, die sich in der Reaktion auf Benutzereingaben und den dargestellten Interfaces (Menü, HUD, Nachrichten, etc.)
+unterscheiden. Abbildung \ref{figure:states_simple} zeigt die Verwendung des Zustandsmusters in Cydonia in Form eines
+UML-Klassendiagramms.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{images/states_simple}
+\caption[UML-Klassendiagramm: Zustände des Spiels]{UML-Klassendiagramm: Zustände des Spiels}
+\label{figure:states_simple}
 \end{figure}
