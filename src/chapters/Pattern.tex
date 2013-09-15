@@ -6,8 +6,8 @@ besteht aus wenigen Klassen, die durch den Einsatz von Delegation und Vererbung 
 ermöglichen."' \cite[S. 719]{Bruegge_2004}
 \end{quotation}
 
-In Folgenden werden einige Komponenten von Cydonia vorgestellt und erläutert, wie bei ihrer Entwicklung Entwurfsmuster
-zum Einsatz kommen.
+In Folgenden werden einige Komponenten von Cydonia vorgestellt und es wird erläutert, wie bei ihrer Entwicklung
+Entwurfsmuster zum Einsatz kommen.
 
 
 \subsection{Equipment-Erzeugung mittels Abstrakte-Fabrik-Muster}
@@ -33,12 +33,12 @@ UML-Klassendiagramm.
 
 \subsection{Szenen-Graph-Erstellung mithilfe des Kompositionsmusters}
 \label{subsection:SceneGraph_CompositePattern}
-Das Kompositionsmuster ist eine Lösung, um eine Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass
-sowohl einzelne Objekte als auch Kompositionen von Objekten durch eine gemeinsame Schnittstelle einheitlich behandelt
-werden können.\cite[S. 724]{Bruegge_2004} Abbildung \ref{figure:composition_spatial} zeigt die Nutzung des Kompositionsmusters zur Implementierung des
-Szenen-Graphen in der jMonkeyEngine3. Die Komponente heißt hier Spatial. Geometry, die Blatt-Klasse, stellt ein
-tatsächliches Objekt in der virtuellen Welt dar, definiert durch Formen und Materialien. Das Kompositum ist Node,
-welches wiederum andere Spatials als Kindelemente enthalten kann.\par
+Das Kompositionsmuster ist eine Lösung, um eine Hierarchie beliebiger Breite und Tiefe zu repräsentieren, sodass sowohl
+einzelne Objekte als auch Kompositionen von Objekten durch eine gemeinsame Schnittstelle einheitlich behandelt werden
+können.\cite[S. 724]{Bruegge_2004} Abbildung \ref{figure:composition_spatial} zeigt die Nutzung des Kompositionsmusters
+zur Implementierung des Szenen-Graphen in der jMonkeyEngine3. Die Komponente heißt hier Spatial. Geometry, die
+Blatt-Klasse, stellt ein tatsächliches Objekt in der virtuellen Welt dar, definiert durch Formen und Materialien. Das
+Kompositum ist Node, welches wiederum andere Spatials als Kindelemente enthalten kann.\par
 
 \begin{figure}[htbp]
 \centering
@@ -49,7 +49,7 @@ welches wiederum andere Spatials als Kindelemente enthalten kann.\par
 
 Ein Beispiel für die Zusammensetzung der virtuellen Welt aus Spatials kann anhand des Avatars eines Spielers gegeben
 werden. Abbildung \ref{figure:composition_avatar} veranschaulicht die Struktur der Spielfigur. Der Wurzelknoten hat drei
-Kindelemente: Kopf, Oberkörper, Unterkörper. Der Kopf ist vom Typ Geometry, während Ober- und Unterkörper Nodes sind,
+Kind\-ele\-men\-te: Kopf, Oberkörper, Unterkörper. Der Kopf ist vom Typ Geometry, während Ober- und Unterkörper Nodes sind,
 die wiederum Kindelemente besitzen, nämlich Arme, Beine und Torso. Die Unterteilung könnte natürlich auch noch weiter
 gehen: Ein Arm könnte zum Beispiel wiederum ein Knoten sein, der aus Oberarm, Unterarm und Hand besteht, wobei die Hand
 ebenfalls aus einzelnen Fingern bestehen könnte usw. Beliebig feingliedrige Strukturen sind möglich, je nach gewünschtem

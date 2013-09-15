@@ -1,7 +1,7 @@
 \section{Analyse-Modelle}
 
 
-\subsection{Objekt Modell}
+\subsection{Objekt-Modell}
 Cydonia stellt, wie viele Spiele, eine virtuelle Welt grafisch dar. Diese virtuelle Welt ist Teil der Anwendungsdomäne
 in der Spiele-Entwicklung. Somit finden sich die Elemente dieser Welt im Analyse-Modell wieder. Die Objekte des
 Analyse-Modells wurden anhand der Anwendungsfälle und Anforderungen identifiziert. Abbildung
@@ -26,7 +26,7 @@ Analyse-Modells wurden anhand der Anwendungsfälle und Anforderungen identifizier
 Anhand der in Abschnitt \ref{section:Scenarios} beschriebenen Szenarien wurden die Anwendungsfälle identifiziert, die
 zeigen, wie die Anwender mit dem System interagieren. In diesem Abschnitt wird das Anwendungsfall-Modell dargestellt und
 die einzelnen Anwendungsfälle erklärt. Eine vollständige Beschreibung mit Ereignisfluss zu jedem Anwendungsfall befindet
-sich in \ref{chapter:UseCaseDescriptions}. Abbildung \ref{figure:usecases} gibt einen Überblick über die Anwendungsfälle
+sich in Appendix \ref{chapter:UseCaseDescriptions}. Abbildung \ref{figure:usecases} gibt einen Überblick über die Anwendungsfälle
 aus Sicht des einzigen Akteurs, des Spielers.
 
 \begin{figure}[htbp]
@@ -39,23 +39,23 @@ aus Sicht des einzigen Akteurs, des Spielers.
 \subsubsection{Bewegen}
 Zum Spiel gehört, dass der Spieler sich in einer virtuellen dreidimensionalen Welt bewegen kann. Er steuert seinen
 virtuellen Charakter und sieht die Welt aus dessen Perspektive. Zur Bewegung gehört das Laufen nach vorne und hinten.
-Außerdem kann der Spieler seitwärts gehen während die Blickrichtung unverändert nach vorne bleibt. Die Blickrichtung
-kann der Spieler aus der Wagrechten um 90° nach oben und 90° nach unten verändern und sich beliebig weit um die eigene
-vertikale Achse drehen. Des weiteren kann der Spieler im Stand sowie während des Laufens springen um zum Beispiel
-Hindernisse zu überwinden. Die maximale Sprunghöhe reicht aus um auf einen auf gleiche Bodenhöhe befindlichen Cube zu
+Außerdem kann der Spieler seitwärts gehen, während die Blickrichtung unverändert nach vorne bleibt. Die Blickrichtung
+kann der Spieler aus der Waagrechten um 90° nach oben und 90° nach unten verändern und sich beliebig weit um die eigene
+vertikale Achse drehen. Des Weiteren kann der Spieler im Stand sowie während des Laufens springen, um zum Beispiel
+Hindernisse zu überwinden. Die maximale Sprunghöhe reicht aus, um auf einen auf gleicher Bodenhöhe befindlichen Cube zu
 springen.
 
 \subsubsection{Equipment wechseln}
 Der Spieler hat unterschiedliche Equipments mit unterschiedlichen Funktionaliäten bei sich. Zwischen diesen Equipments
-kann er während des Spiel wechseln, um alle Funktionalitäten auszunutzen. Equipments behalten ihren Zustand während sie
+kann er während des Spiel wechseln, um alle Funktionalitäten auszunutzen. Equipments behalten ihren Zustand, während sie
 nicht ausgewählt sind.
 
 \subsubsection{Cube bewegen}
 Der Spieler kann manche Cubes aufnehmen und an beliebiger Stelle wieder platzieren. Dazu visiert er den Cube an und
-nutzt das Pick'n'Place-Equipment um den Cube aufzunehmen. Der Cube wird dann aus der Spielwelt entfernt und im Equipment
-zwischengelagert. Mit dem Cube im Ge\-päck kann sich der Spieler beliebig durch die Spielwelt bewegen, wie es der
-Anwendungsfall "`Bewegen"' beschreibt. Um den Cube wieder zu platzieren visiert der Spieler die neue Position an und
-nutzt wieder das Equipment.
+nutzt das Pick'n'Place-Equipment, um den Cube aufzunehmen. Der Cube wird dann aus der Spielwelt entfernt und im
+Equipment zwischengelagert. Mit dem Cube im Ge\-päck kann sich der Spieler beliebig durch die Spielwelt bewegen, wie es
+der Anwendungsfall "`Bewegen"' beschreibt. Um den Cube wieder zu platzieren, visiert der Spieler die neue Position an
+und nutzt wieder das Pick'n'Place-Equipment.
 
 \subsubsection{Gegnerische Flagge nehmen}
 Jedes Team hat eine Flagge, die sich zu Beginn in der jeweiligen Basis befindet. Berührt ein Spieler die gegnerische
@@ -63,16 +63,15 @@ Flagge, nimmt er sie auf. Er kann sich dann mit der Flagge durch die Spielwelt b
 "`Bewegen"' beschreibt.
 
 \subsubsection{Gegnerische Flagge erobern}
-Um Punkte zu erzielen müssen die Spieler eines Teams die Flagge die gegnerische Flagge in ihre Basis holen. Dazu muss
-der Spieler, der die gegnerische Flagge bei sich trägt, die eigene Flaggenbasis berühren. Für die erfolgreiche Eroberung
-der Flagge erhält das Team einen Punkt. Anschließend wird die Flagge an ihren Ursprungort (in ihrer Flaggenbasis)
-zurückgesetzt.
+Um Punkte zu erzielen, müssen die Spieler eines Teams die gegnerische Flagge in ihre Basis holen. Dazu muss der Spieler,
+der die gegnerische Flagge bei sich trägt, die eigene Flaggenbasis berühren. Für die erfolgreiche Eroberung der Flagge
+erhält das Team einen Punkt. Anschließend wird die Flagge an ihren Ursprungsort (in ihrer Flaggenbasis) zurückgesetzt.
 
 \subsubsection{Objekte swappen}
 Um Gegner von der Flagge zu trennen oder sich den Weg frei zu kämpfen, kann der Spieler zwei Objekte swappen. Spieler
 und Cubes können zu diesem Zweck markiert werden und tauschen dann die Position in der Spielwelt. Wird ein Spieler, der
 die gegnerische Flagge bei sich trägt, von einem Gegner geswappt, bleibt die Flagge an der ursprünglichen Position des
-Spielers. Somit können können Gegner von der eigenen Flagge getrennt werden, um diese zurückholen zu können.
+Spielers. Somit können Gegner von der eigenen Flagge getrennt werden, um diese zurückholen zu können.
 
 \subsubsection{Eigene Flagge zurückholen}
 Ist die Flagge eines Teams nicht mehr in ihrer Basis, sondern befindet sich an einer anderen Stelle in der Spielwelt,

@@ -15,8 +15,8 @@ Die wichtigsten Aufgaben des Netzcodes sind:
 \end{itemize}
 
 Der Netzcode eines Computerspiels hat für die Entwickler teils einen so hohen Stellenwert, dass ein kleineres Spiel
-ausschließlich als Testplattform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel Mythos
-im Rahmen der Entwicklung von Hellgate: London beim Entwickler Flagship Studios.\cite{Inerle_2011}\par
+ausschließlich als Testplattform für den Netzcode eines großen Spiels geschrieben wird. So entstand zum Beispiel
+"`Mythos"' im Rahmen der Entwicklung von "'Hellgate: London"' beim Entwickler Flagship Studios.\cite{Inerle_2011}\par
 
 Cydonia verwendet die SpiderMonkey-Bibliothek, mit deren Hilfe Nachrichten über das Netzwerk ausgetauscht werden können
 (vgl. dazu \ref{subsubsection:SpiderMonkey}). Drückt zum Beispiel ein Spieler die Taste "`w"', ermittelt das
@@ -54,12 +54,13 @@ jedoch den Rahmen dieser Arbeit.
 
 
 \subsection{Kommunikationsverlauf bei Spielerbeitritt}
-Wenn ein neuer Spieler dem Spiel beitritt, registriert seine Client-Instanz zunächst beim Server. Der Server bestätigt
-die Verbindung und schickt dem Client auf dessen Nachfrage den aktuellen Zustand der Spielwelt, der anderen Spieler und
-des Spielverlaufs. Der Spieler bekommt nun ein Einstiegsmenü angezeigt in dem er das Team wählen kann. Sobald der
-Spieler seine Auswahl bestätigt, sendet der Client den Spielerbeitritt-Befehl an den Server. Dieser informiert alle
-Client-Instanzen über den Beitritt und die Daten des neuen Spielers. Der Client des Spielers sendet den Teamwahl-Befehl
-an den Server. Der Server reagiert wiederum mit dem Versenden eines entsprechenden Ereignisses an alle Client-Instanzen.
+Wenn ein neuer Spieler dem Spiel beitritt, registriert sich seine Client-Instanz zunächst beim Server. Der Server
+bestätigt die Verbindung und schickt dem Client auf dessen Nachfrage den aktuellen Zustand der Spielwelt, der anderen
+Spieler und des Spielverlaufs. Der Spieler bekommt nun ein Einstiegsmenü angezeigt, in dem er das Team wählen kann.
+Sobald der Spieler seine Auswahl bestätigt, sendet der Client den Spielerbeitritt-Befehl an den Server. Dieser
+informiert alle Client-Instanzen über den Beitritt und die Daten des neuen Spielers. Der Client des Spielers sendet den
+Teamwahl-Befehl an den Server. Der Server reagiert wiederum mit dem Versenden eines entsprechenden Ereignisses an alle
+Client-Instanzen.
 Nach Erhalt dieses Ereignisses stellt der Client die Spielwelt dar. In Abbildung \ref{figure:sequence_player_joins} wird
 die Kommunikation zwischen den involvierten Komponenten und Akteuren in Form eines UML-Sequenzdiagramms dargestellt.
 

@@ -2,7 +2,7 @@
 \label{chapter:SystemDesign}
 
 \section{Systemzerlegung}
-Bei der Systemzerlegung wird das System, basierend auf dem An\-wen\-dungs\-fall- und dem Analysemodell, in kleinere
+Bei der Systemzerlegung wird das System, basierend auf dem An\-wen\-dungs\-fall- und dem Analyse-Modell, in kleinere
 Bestandteile zerlegt.\cite[S. 257ff]{Bruegge_2004}\par % Sinngemäß, kein wörtliches Zitat.
 
 Das System von Cydonia wurde in folgende Pakete zerlegt: Player, Equipment, GameWorld, GameController, Input.
@@ -39,9 +39,9 @@ resultierende Reaktion, nämlich dem Player-Paket den Befehl zu geben, das aktuel
 und dessen Benutzung anzustoßen, wodurch der Befehl im Equipment-Paket landet. Dort ist die auszuführende Aktion für das
 Pick'n'Place-Equip\-ment implementiert (Rückmeldungen für den Spieler, Manipulation der Spielwelt usw.).
 Das Equipment-Paket meldet folglich dem GameController-Paket die gewünschte Manipulation der Spielwelt, nämlich das
-Platzieren des im Equipment vorrätigen Cubes an einer bestimmten Position. Letzendlich wird die Platzierung des Cubes im
-Paket GameWorld ausgeführt und der Spieler kann den neuen Cube sehen. Dieser beispielhafte Ablauf kann auch anhand der
-Nummerierung in Abbildung \ref{figure:global_control_flow} nachvollzogen werden.\par
+Platzieren des im Equipment vorrätigen Cubes an einer bestimmten Position. Letzt\-end\-lich wird die Platzierung des
+Cubes im Paket GameWorld ausgeführt und der Spieler kann den neuen Cube sehen. Dieser beispielhafte Ablauf kann auch
+anhand der Nummerierung in Abbildung \ref{figure:global_control_flow} nachvollzogen werden.\par
 
 Das Spiel hat jedoch auch Komponenten, die nicht ereignisgesteuert arbeiten. Das Rendern der virtuellen Welt sowie
 deren physikalische Simulation laufen prozedural ab. In einer endlosen Schleife wird mehrmals pro Sekunde ein kleiner
