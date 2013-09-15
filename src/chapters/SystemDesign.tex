@@ -2,7 +2,7 @@
 \label{chapter:SystemDesign}
 
 \section{Systemzerlegung}
-Bei der Systemzerlegung wird das System, basierend auf dem Anwendungsfall- und dem Analysemodell, in kleinere
+Bei der Systemzerlegung wird das System, basierend auf dem An\-wen\-dungs\-fall- und dem Analysemodell, in kleinere
 Bestandteile zerlegt.\cite[S. 257ff]{Bruegge_2004}\par % Sinngemäß, kein wörtliches Zitat.
 
 Das System von Cydonia wurde in folgende Pakete zerlegt: Player, Equipment, GameWorld, GameController, Input.
@@ -37,7 +37,7 @@ der Spielwelt zu platzieren. Der Tastendruck wird vom Paket Input detektiert und
 "`benutze equipment"'), welcher dann an das GameController-Paket weitergereicht wird. Dieses ermittelt die daraus
 resultierende Reaktion, nämlich dem Player-Paket den Befehl zu geben, das aktuelle Equipment des Spielers zu ermitteln
 und dessen Benutzung anzustoßen, wodurch der Befehl im Equipment-Paket landet. Dort ist die auszuführende Aktion für das
-Pick'n'Place-Equipment implementiert (Rückmeldungen für den Spieler, Manipulation der Spielwelt usw.).
+Pick'n'Place-Equip\-ment implementiert (Rückmeldungen für den Spieler, Manipulation der Spielwelt usw.).
 Das Equipment-Paket meldet folglich dem GameController-Paket die gewünschte Manipulation der Spielwelt, nämlich das
 Platzieren des im Equipment vorrätigen Cubes an einer bestimmten Position. Letzendlich wird die Platzierung des Cubes im
 Paket GameWorld ausgeführt und der Spieler kann den neuen Cube sehen. Dieser beispielhafte Ablauf kann auch anhand der
