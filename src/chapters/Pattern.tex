@@ -15,10 +15,10 @@ Da die Equipments der Spieler unterschiedlich sein können und auch in der Zukunf
 von einer Fabrik-Klasse erzeugt. Die Equipments müssen in Client und Server jedoch unterschiedliche Implementierungen
 haben. Im Client soll das Equipment grafisch dargestellt und Sounds abgespielt werden. Im Server dagegen sollen
 stattdessen die Auswirkungen der Benutzung berechnet werden. Daher kommt hier das Abstrakte-Fabrik-Muster zum Einsatz.
-Das Abstrakte-Fabrik-Muster setzt Spezifikationsvererbung ein, um die Schnittstelle eines Produkts von seiner
-Implementierung zu entkoppeln. Um sicherzustellen, dass auf jeder Plattform stets nur die richtigen Objekte erzeugt
-werden, also eine konsistente Menge von Objekten vorhanden ist, dürfen Objekte nur über eine Fabrik erzeugt
-werden.\cite{Bruegge_2004} Im Fall der Equipments existieren eine ClientEquipmentFactory und eine
+"`Das Abstrakte-Fabrik-Muster setzt Spezifikationsvererbung ein, um die Schnittstelle eines Produkts von seiner
+Implementierung zu entkoppeln."'\cite[S. 360]{Bruegge_2004} Um sicherzustellen, dass auf jeder Plattform stets nur die
+richtigen Objekte erzeugt werden, also eine konsistente Menge von Objekten vorhanden ist, dürfen Objekte nur über eine
+Fabrik erzeugt werden.\cite[S. 360]{Bruegge_2004} Im Fall der Equipments existieren eine ClientEquipmentFactory und eine
 ServerEquipmentFactory, die jeweils die von AbstractEquipmentFactory geerbten Methoden zur Erzeugung von Pick'n'Place-
 und Swapper-Equipments implementieren. Abbildung \ref{figure:equipment_factory} zeigt die Struktur als
 UML-Klassendiagramm.

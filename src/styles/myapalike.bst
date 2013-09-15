@@ -117,7 +117,9 @@ FUNCTION {output.check}
 %					apalike ignores the month
 FUNCTION {output.year.check}
 { year empty$
-    { "empty year in " cite$ * warning$ }
+    { write$ " (ohne Jahr)" mid.sentence 'output.state :=
+      "empty year in " cite$ * warning$ 
+    }
     { write$
       " (" year * extra.label * ")" *
       mid.sentence 'output.state :=
@@ -921,8 +923,13 @@ FUNCTION {calc.label}
     }
   if$
   ", "							% these three lines are
-  *							% for apalike, which
-  year field.or.null purify$ #-1 #4 substring$		% uses all four digits
+  *	
+  year empty$						% for apalike, which
+    {"o.J."}
+    {
+  	year field.or.null purify$ #-1 #4 substring$		% uses all four digits
+  	}
+  if$
   *
   'label :=
 }
